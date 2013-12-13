@@ -1,10 +1,20 @@
-_readRegRespond: CODE, 574 0 26
-_main: CODE, 620 0 16
-_high_isr: CODE, 8 0 300
-__initialization: CODE, 600 0 14
-_baud1USART: CODE, 636 0 6
-_Read1USART: CODE, 518 0 56
-_ConfigureUSART: CODE, 448 0 70
-_Open1USART: CODE, 308 0 140
-_low_isr: CODE, 24 0 138
-Total: 766
+_writeCoil: CODE, 2934 0 310
+_checkCRC: CODE, 3540 0 262
+_readCoil: CODE, 578 0 554
+_decodeIt: CODE, 4006 0 160
+_main: CODE, 4388 0 26
+_writeReg: CODE, 3244 0 296
+_ClsUSART: CODE, 4438 0 12
+_OpnUSART: CODE, 4166 0 108
+__initialization: CODE, 4274 0 64
+_OpenTmr0: CODE, 4414 0 24
+_generateCRC: CODE, 3802 0 204
+_isr: CODE, 8 0 2926
+_clearResponse: CODE, 4344 0 44
+_ConfigInterrupts: CODE, 4460 0 8
+_readInputReg: CODE, 1132 0 488
+_readInputCoil: CODE, 24 0 554
+_modbusDelay: CODE, 4450 0 10
+_readReg: CODE, 1620 0 488
+_writeMultipleRegs: CODE, 2108 0 470
+Total: 7008

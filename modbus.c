@@ -68,6 +68,9 @@ void decodeIt(void)
       else if(received[1] == 0x06){
         writeReg();
       }
+      else if(received[1] == 0x10){
+        writeMultipleRegs();
+      }
       else{
         response[0] = 0; //error this does nothing though..
       }
@@ -241,6 +244,83 @@ void writeReg(void)
   clearResponse();
 }
 
+void writeMultipleRegs(void)
+{
+/******************************************************************************/
+/* Works out which reg to write and then responds                             */
+/******************************************************************************/
+  unsigned int wmr_Address = 0;
+  unsigned int wmr_AddressHigh = 0;
+  unsigned int wmr_AddressLow = 0;
+  unsigned int wmr_numRegs = 0;
+  unsigned int wmr_numRegsHigh = 0;
+  unsigned int wmr_numRegsLow = 0;
+  unsigned int wmr_numBytes = 0;
+  unsigned int valToWrite = 0;
+  unsigned int valToWriteHigh = 0;
+  unsigned int valToWriteLow = 0;
+
+  unsigned char j = 0;
+  unsigned int crc = 0;
+  unsigned int i = 0;
+
+  //Combine address bytes
+  wmr_Address = received[2];
+  wmr_Address <<= 8;
+  //add address high and low bits
+  wmr_Address |= received[3];
+  wmr_AddressHigh = received[2];
+  wmr_AddressLow = received[3];
+
+
+  //Combine number of regs bytes
+  wmr_numRegs = received[4];
+  wmr_numRegs <<= 8;
+  wmr_numRegs |= received[5];
+  wmr_numRegsHigh = received[4];
+  wmr_numRegsLow = received[5];
+
+  wmr_numBytes = received[6];
+
+  j = 7;
+
+  for(i=0;i<wmr_numBytes;i++)
+  {
+    valToWrite = received[j];
+    valToWrite <<= 8;
+    j++;
+    valToWrite |= received[j];
+    j++;
+
+    holdingReg[wmr_Address + i] = valToWrite;
+  }
+
+
+  response[0] = SlaveAddress;
+  response[1] = 0x10;
+  response[2] = wmr_AddressHigh;
+  response[3] = wmr_AddressLow;
+  response[4] = wmr_numRegsHigh;
+  response[5] = wmr_numRegsLow;
+
+  crc = generateCRC(8);
+
+  response[6] = crc >> 8;
+  response[7] = crc;
+
+  writeEnable = 1;
+  for(i=0;i!=9;i++){
+   while(busyUsart); //Change this to Busy1USART for double USART PIC's
+     TransmitBuffer = response[i];
+  }
+  writeEnable = 0;
+  j=0;
+
+  clearResponse();
+  
+}
+
+
 void readCoil(void)
 {
 /******************************************************************************/
@@ -280,32 +360,32 @@ void readCoil(void)
   k = 3; //start at response 3
 
   for(i=howManyBytes; i!=0; i--){
-		if(i>1){
+    if(i>1){
       for(j=0;j!=8;j++){
-				if(coils[l]){
-					lsb = 1;
-				}
-				else{
+	if(coils[l]){
+          lsb = 1;
+	}
+	else{
           lsb = 0;
-				}
-				response[k] ^= (lsb << j);
-				l++;
-	    }
-			k++;
-	  }
-		else{
-			for(j=0;j!=remainder;j++){
-				if(coils[l]){
-					lsb = 1;
-				}
-				else{
-          lsb = 0;
-				}
-        response[k] ^= (lsb << j);
-				l++;
-			}
-			k++;
-		}
+	}
+	response[k] ^= (lsb << j);
+	l++;
+      }
+      k++;
+    }
+    else{
+      for(j=0;j!=remainder;j++){
+      if(coils[l]){
+        lsb = 1;
+      }
+      else{
+        lsb = 0;
+      }
+      response[k] ^= (lsb << j);
+      l++;
+      }
+      k++;
+    }
   }
   crc = generateCRC(k+2);
 

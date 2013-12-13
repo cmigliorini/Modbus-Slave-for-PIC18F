@@ -33,18 +33,22 @@ extern volatile char modbusMessage;
 /* Main Program                                                               */
 /******************************************************************************/
 
-//SAM NOT RECEIVING ANYTHING FROM TONYS GADGET..
 
 void main(void)
 {
   OpnUSART();
   ConfigInterrupts();
 
+  TRISF = 0;
+
   while(1){
     if(modbusMessage){
       decodeIt();}
 
-      //Start code here... below is just an example
+
+    LATF = holdingReg[1];
+
+      //Start code here... 
     }
 
 }

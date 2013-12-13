@@ -10,6 +10,7 @@ void clearResponse(void);
 void readReg(void);         /* I/O and Peripheral Initialization */
 void readInputReg(void);
 void writeReg(void);
+void writeMultipleRegs(void);
 void readCoil(void);
 void readInputCoil(void);
 void writeCoil(void);

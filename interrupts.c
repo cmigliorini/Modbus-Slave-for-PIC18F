@@ -20,10 +20,11 @@ volatile unsigned char received[125]; //Enough to write all holding-r's
 /******************************************************************************/
 
 // start ISR code
-#pragma code isr = 0x08 // store the below code at address 0x08
-#pragma interrupt isr   // let the compiler know that the function isr() is int
+//if using C18
+//#pragma code isr = 0x08 // store the below code at address 0x08
+//#pragma interrupt isr   // let the compiler know that the function isr() is int
 
-void isr(void)
+void interrupt isr(void)
 {
   if(ReceiveFlag1){ // USART receive interrupt flag has been set
     if((!endOfMessage)&&(!newMessage)){
