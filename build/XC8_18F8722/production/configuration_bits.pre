@@ -1,5 +1,5 @@
 
-# 1 "interrupts.c"
+# 1 "configuration_bits.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f8722.h"
 extern volatile unsigned char SSP2CON2 @ 0xF62;
@@ -8280,21 +8280,6 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
-# 8 "modbus.h"
-unsigned char checkCRC(void);
-void clearResponse(void);
-void readReg(void);
-void readInputReg(void);
-void writeReg(void);
-void writeMultipleRegs(void);
-void readCoil(void);
-void readInputCoil(void);
-void writeCoil(void);
-void writeMultipleCoils(void);
-void modbusDelay(void);
-void decodeIt(void);
-unsigned int generateCRC(unsigned char);
-
 # 39 "system.h"
 void ConfigInterrupts(void);
 
@@ -8305,53 +8290,78 @@ void OpnUSART(void);
 
 void OpenTmr0(void);
 
-# 13 "interrupts.c"
-volatile char endOfMessage,newMessage = 1;
-volatile char timerCount,messageLength,modbusMessage,z = 0;
-volatile unsigned char response[125];
-volatile unsigned char received[125];
 
-# 27
-void interrupt isr(void)
-{
-if(PIR1bits.RCIF){
-if((!endOfMessage)&&(!newMessage)){
-if(PIR1bits.TXIF){
-received[z] = RCREG1;
-z++;
-timerCount = 0;
-}
-}
-if(newMessage){
-OpenTmr0();
-if(PIR1bits.TXIF){
-received[z] = RCREG1;
-z++;
-newMessage = 0;
-endOfMessage = 0;
-messageLength = 0;
-modbusMessage = 0;
-timerCount = 0;
-return;
-}
-}
-}
-else if(INTCONbits.TMR0IF){
-modbusDelay();
-timerCount++;
-if(timerCount > 4){
-endOfMessage = 1;
-newMessage = 1;
-messageLength = z;
-modbusMessage = 1;
-for(z=(messageLength);z!=125;z++){
-received[z] = 0;
-}
-z=0;
-T0CONbits.TMR0ON = 0;
-timerCount = 0;
-}
-INTCONbits.TMR0IF = 0;
-}
-}
-#pragma code
+# 18 "configuration_bits.c"
+#pragma config OSC = HS
+#pragma config FCMEN = OFF
+#pragma config IESO = OFF
+
+
+#pragma config PWRT = OFF
+#pragma config BOREN = OFF
+#pragma config BORV = 3
+
+
+#pragma config WDT = OFF
+#pragma config WDTPS = 32768
+
+
+#pragma config MODE = MC
+#pragma config ADDRBW = ADDR20BIT
+#pragma config DATABW = DATA16BIT
+#pragma config WAIT = OFF
+
+
+#pragma config CCP2MX = PORTC
+#pragma config ECCPMX = PORTE
+#pragma config LPT1OSC = OFF
+#pragma config MCLRE = ON
+
+
+#pragma config STVREN = ON
+#pragma config LVP = OFF
+#pragma config BBSIZ = BB2K
+#pragma config XINST = OFF
+
+
+#pragma config CP0 = OFF
+#pragma config CP1 = OFF
+#pragma config CP2 = OFF
+#pragma config CP3 = OFF
+#pragma config CP4 = OFF
+#pragma config CP5 = OFF
+#pragma config CP6 = OFF
+#pragma config CP7 = OFF
+
+
+#pragma config CPB = OFF
+#pragma config CPD = OFF
+
+
+#pragma config WRT0 = OFF
+#pragma config WRT1 = OFF
+#pragma config WRT2 = OFF
+#pragma config WRT3 = OFF
+#pragma config WRT4 = OFF
+#pragma config WRT5 = OFF
+#pragma config WRT6 = OFF
+#pragma config WRT7 = OFF
+
+
+#pragma config WRTC = OFF
+#pragma config WRTB = OFF
+#pragma config WRTD = OFF
+
+
+#pragma config EBTR0 = OFF
+#pragma config EBTR1 = OFF
+#pragma config EBTR2 = OFF
+#pragma config EBTR3 = OFF
+#pragma config EBTR4 = OFF
+#pragma config EBTR5 = OFF
+#pragma config EBTR6 = OFF
+#pragma config EBTR7 = OFF
+
+
+#pragma config EBTRB = OFF
+

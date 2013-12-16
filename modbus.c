@@ -20,6 +20,8 @@
 #include "modbus.h"
 #include <usart.h>
 #include "system.h"
+
+#define CHECK_BIT(var,pos) !!((var) & (1 << (pos)))
 /******************************************************************************/
 /* Global variables                                                           */
 /******************************************************************************/
@@ -70,6 +72,9 @@ void decodeIt(void)
       }
       else if(received[1] == 0x10){
         writeMultipleRegs();
+      }
+      else if(received[1] == 0x0F){
+        writeMultipleCoils();
       }
       else{
         response[0] = 0; //error this does nothing though..
@@ -541,6 +546,106 @@ void writeCoil(void)
   writeEnable = 0;
   clearResponse();
 }
+
+void writeMultipleCoils(void)
+{
+/******************************************************************************/
+/* Reads a coil and then responds                                             */
+/******************************************************************************/
+  unsigned int wmc_Address = 0;
+  unsigned int wmc_AddressHigh = 0;
+  unsigned int wmc_AddressLow = 0;
+  unsigned int wmc_numCoils = 0;
+  unsigned int wmc_numCoilsHigh = 0;
+  unsigned int wmc_numCoilsLow = 0;
+  unsigned int wmc_numBytes = 0;
+  unsigned int crc = 0;
+
+  unsigned char howManyBytes = 0;
+  unsigned char remainder = 0;
+  unsigned char lsb = 0;
+  unsigned char i,j,k,l = 0;
+
+  //Combine address bytes
+  wmc_Address = received[2];
+  wmc_AddressHigh = received[2];
+  wmc_Address <<=8;
+  wmc_Address |= received[3];
+  wmc_AddressLow = received[3];
+
+  //Combine number of coils bytes
+  wmc_numCoils = received[4];
+  wmc_numCoilsHigh = received[4];
+  wmc_numCoils <<= 8;
+  wmc_numCoils |= received[5];
+  wmc_numCoilsLow = received[5];
+
+  wmc_numBytes = received[6];
+
+  response[0] = SlaveAddress;
+  response[1] = 0x0F;
+
+  howManyBytes = wmc_numCoils/8;
+  remainder = wmc_numCoils % 8;
+
+  if(remainder){
+    howManyBytes += 1;
+  }
+  response[2] = wmc_AddressHigh;
+  response[3] = wmc_AddressLow;
+
+  response[4] = wmc_numCoilsHigh;
+  response[5] = wmc_numCoilsLow;
+
+  l = wmc_Address;
+  k = 3; //start at response 3
+
+  unsigned char bitSet;
+  unsigned char valToWrite;
+  unsigned char q = 7; //count through vals to write
+  
+
+  for(i=howManyBytes; i!=0; i--){
+    valToWrite = received[q];
+    q++;
+    if(i>1){
+      for(j=0;j!=8;j++){
+	if(CHECK_BIT(valToWrite, j)){
+          coils[l] = 1;
+	}
+	else{
+          coils[l] = 0; //need to sort out remainder stuff
+
+	}
+	l++;
+      }
+    }
+    else{
+      for(j=0;j!=remainder;j++){
+      if(CHECK_BIT(valToWrite, j)){
+          coils[l] = 1;
+      }
+      else{
+        coils[l] = 0;
+      }
+      l++;
+      }
+    }
+  }
+  crc = generateCRC(8);
+
+  response[6] = crc >> 8;
+  response[7] = crc;
+
+  writeEnable = 1;
+  for(i=0;i!=9;i++){
+   while(busyUsart);//Change this to Busy1USART for double USART PIC's
+     TransmitBuffer = response[i];
+  }
+  writeEnable = 0;
+  clearResponse();
+}
+
 
 unsigned int generateCRC(unsigned char messageLength)
 {

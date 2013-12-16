@@ -1,5 +1,5 @@
 
-# 1 "interrupts.c"
+# 1 "system.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f8722.h"
 extern volatile unsigned char SSP2CON2 @ 0xF62;
@@ -8280,20 +8280,98 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
-# 8 "modbus.h"
-unsigned char checkCRC(void);
-void clearResponse(void);
-void readReg(void);
-void readInputReg(void);
-void writeReg(void);
-void writeMultipleRegs(void);
-void readCoil(void);
-void readInputCoil(void);
-void writeCoil(void);
-void writeMultipleCoils(void);
-void modbusDelay(void);
-void decodeIt(void);
-unsigned int generateCRC(unsigned char);
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.21\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.21\include\stdbool.h"
+typedef unsigned char bool;
 
 # 39 "system.h"
 void ConfigInterrupts(void);
@@ -8305,53 +8383,81 @@ void OpnUSART(void);
 
 void OpenTmr0(void);
 
-# 13 "interrupts.c"
-volatile char endOfMessage,newMessage = 1;
-volatile char timerCount,messageLength,modbusMessage,z = 0;
-volatile unsigned char response[125];
-volatile unsigned char received[125];
-
-# 27
-void interrupt isr(void)
+# 23 "system.c"
+void OpnUSART(void)
 {
-if(PIR1bits.RCIF){
-if((!endOfMessage)&&(!newMessage)){
-if(PIR1bits.TXIF){
-received[z] = RCREG1;
-z++;
-timerCount = 0;
+
+
+
+
+unsigned long spbrg = 0;
+
+spbrg = 10000000L/9600;
+spbrg /= 64;
+spbrg -= 1;
+ClsUSART();
+TRISCbits.TRISC1 = 0;
+LATCbits.LATC1 = 0;
+
+# 62
+TXSTA1 = 0;
+RCSTA1 = 0;
+
+TRISCbits.TRISC6 = 0;
+TRISCbits.TRISC7 = 1;
+
+TXSTA1bits.SYNC = 0;
+TXSTA1bits.TX9 = 0;
+TXSTA1bits.SENDB = 0;
+TXSTA1bits.BRGH = 0;
+
+RCSTA1bits.CREN = 1;
+RCSTA1bits.RX9 = 0;
+
+PIE1bits.RCIE = 1;
+PIE1bits.TXIE = 0;
+
+BAUDCON1bits.BRG16 = 0;
+SPBRG = spbrg;
+
+TXSTA1bits.TXEN = 1;
+RCSTA1bits.SPEN = 1;
+
 }
+
+void ClsUSART(void)
+{
+
+# 95
+RCSTA1 &= 0b01001111;
+TXSTA1bits.TXEN = 0;
+PIE1 &= 0b11001111;
+
 }
-if(newMessage){
-OpenTmr0();
-if(PIR1bits.TXIF){
-received[z] = RCREG1;
-z++;
-newMessage = 0;
-endOfMessage = 0;
-messageLength = 0;
-modbusMessage = 0;
-timerCount = 0;
-return;
-}
-}
-}
-else if(INTCONbits.TMR0IF){
-modbusDelay();
-timerCount++;
-if(timerCount > 4){
-endOfMessage = 1;
-newMessage = 1;
-messageLength = z;
-modbusMessage = 1;
-for(z=(messageLength);z!=125;z++){
-received[z] = 0;
-}
-z=0;
+
+void OpenTmr0(void)
+{
 T0CONbits.TMR0ON = 0;
-timerCount = 0;
-}
+T0CONbits.T08BIT = 0;
+T0CONbits.T0CS = 0;
+T0CONbits.PSA = 1;
+
+TMR0H = 0xF5;
+TMR0L = 0xD7;
+
+T0CONbits.TMR0ON = 1;
+
 INTCONbits.TMR0IF = 0;
+INTCONbits.TMR0IE = 1;
+
+
+
 }
+
+void ConfigInterrupts(void)
+{
+RCONbits.IPEN = 0;
+INTCONbits.GIE = 1;
+INTCONbits.PEIE = 1;
 }
-#pragma code
+

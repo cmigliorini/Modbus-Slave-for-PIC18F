@@ -1,94 +1,52 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"13139 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f8722.h
-[v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
-"13133
-[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
-"30 modbus.c
-[v _response `Vuc ~T0 @X0 -> 0 `x e ]
-"31
-[v _received `Vuc ~T0 @X0 -> 0 `x e ]
-"8 modbus.h
-[v _checkCRC `(uc ~T0 @X0 0 ef ]
-"14
-[v _readCoil `(v ~T0 @X0 0 ef ]
-"15
-[v _readInputCoil `(v ~T0 @X0 0 ef ]
-"10
-[v _readReg `(v ~T0 @X0 0 ef ]
-"11
-[v _readInputReg `(v ~T0 @X0 0 ef ]
-"16
-[v _writeCoil `(v ~T0 @X0 0 ef ]
-"12
-[v _writeReg `(v ~T0 @X0 0 ef ]
-"13
-[v _writeMultipleRegs `(v ~T0 @X0 0 ef ]
-"17
-[v _writeMultipleCoils `(v ~T0 @X0 0 ef ]
-"32 modbus.c
-[v _modbusMessage `Vuc ~T0 @X0 0 e ]
-"28
-[v _holdingReg `Vui ~T0 @X0 -> 0 `x e ]
-"20 modbus.h
-[v _generateCRC `(ui ~T0 @X0 0 ef1`uc ]
-"4815 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f8722.h
-[s S249 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S249 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
-"4825
-[s S250 :1 `uc 1 ]
-[n S250 . LC0 ]
-"4828
-[s S251 :1 `uc 1 :1 `uc 1 ]
-[n S251 . . LC1 ]
-"4832
-[s S252 :2 `uc 1 :1 `uc 1 ]
-[n S252 . . LC2 ]
-"4836
-[s S253 :3 `uc 1 :1 `uc 1 ]
-[n S253 . . LC3 ]
-"4840
-[s S254 :4 `uc 1 :1 `uc 1 ]
-[n S254 . . LC4 ]
-"4844
-[s S255 :5 `uc 1 :1 `uc 1 ]
-[n S255 . . LC5 ]
-"4848
-[s S256 :6 `uc 1 :1 `uc 1 ]
-[n S256 . . LC6 ]
-"4852
-[s S257 :7 `uc 1 :1 `uc 1 ]
-[n S257 . . LC7 ]
-"4814
-[u S248 `S249 1 `S250 1 `S251 1 `S252 1 `S253 1 `S254 1 `S255 1 `S256 1 `S257 1 ]
-[n S248 . . . . . . . . . . ]
-"4857
-[v _LATCbits `VS248 ~T0 @X0 0 e@3979 ]
-"8898
-[s S430 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S430 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
-"8908
-[s S431 :1 `uc 1 :5 `uc 1 :1 `uc 1 ]
-[n S431 . TXD8 . TX8_9 ]
-"8913
-[s S432 :6 `uc 1 :1 `uc 1 ]
-[n S432 . . NOT_TX8 ]
-"8917
-[s S433 :6 `uc 1 :1 `uc 1 ]
-[n S433 . . nTX8 ]
-"8921
-[s S434 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S434 . TX9D1 TRMT1 BRGH1 SENDB1 SYNC1 TXEN1 TX91 CSRC1 ]
-"8897
-[u S429 `S430 1 `S431 1 `S432 1 `S433 1 `S434 1 ]
-[n S429 . . . . . . ]
-"8932
-[v _TXSTA1bits `VS429 ~T0 @X0 0 e@4012 ]
-"9174
-[v _TXREG1 `Vuc ~T0 @X0 0 e@4013 ]
-"29 modbus.c
-[v _coils `Vuc ~T0 @X0 -> 0 `x e ]
-"32
-[v _messageLength `Vuc ~T0 @X0 0 e ]
+"7823 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f8722.h
+[s S379 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S379 . TMR1IF TMR2IF CCP1IF SSP1IF TX1IF RC1IF ADIF PSPIF ]
+"7833
+[s S380 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S380 . . SSPIF TXIF RCIF ]
+"7822
+[u S378 `S379 1 `S380 1 ]
+[n S378 . . . ]
+"7840
+[v _PIR1bits `VS378 ~T0 @X0 0 e@3998 ]
+"9185
+[v _RCREG1 `Vuc ~T0 @X0 0 e@4014 ]
+"46 system.h
+[v _OpenTmr0 `(v ~T0 @X0 0 ef ]
+"13588 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f8722.h
+[s S711 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S711 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"13598
+[s S712 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S712 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE GIE ]
+"13608
+[s S713 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S713 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE GIEL GIEH ]
+"13618
+[s S714 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S714 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"13628
+[s S715 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S715 . . GIEL GIEH ]
+"13587
+[u S710 `S711 1 `S712 1 `S713 1 `S714 1 `S715 1 ]
+[n S710 . . . . . . ]
+"13634
+[v _INTCONbits `VS710 ~T0 @X0 0 e@4082 ]
+"17 modbus.h
+[v _modbusDelay `(v ~T0 @X0 0 ef ]
+"13058 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f8722.h
+[s S695 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S695 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
+"13066
+[s S696 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S696 . T0PS0 T0PS1 T0PS2 T0PS3 ]
+"13057
+[u S694 `S695 1 `S696 1 ]
+[n S694 . . . ]
+"13073
+[v _T0CONbits `VS694 ~T0 @X0 0 e@4053 ]
 [; ;pic18f8722.h: 44: extern volatile unsigned char SSP2CON2 @ 0xF62;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f8722.h
 [; ;pic18f8722.h: 46: asm("SSP2CON2 equ 0F62h");
@@ -6470,35 +6428,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 144: extern void _delay(unsigned long);
 [; ;pic18.h: 146: extern void _delaywdt(unsigned long);
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;modbus.h: 8: unsigned char checkCRC(void);
 [; ;modbus.h: 9: void clearResponse(void);
 [; ;modbus.h: 10: void readReg(void);
@@ -6508,2123 +6437,190 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;modbus.h: 14: void readCoil(void);
 [; ;modbus.h: 15: void readInputCoil(void);
 [; ;modbus.h: 16: void writeCoil(void);
-[; ;modbus.h: 17: void writeMultipleCoils(void);
-[; ;modbus.h: 18: void modbusDelay(void);
-[; ;modbus.h: 19: void decodeIt(void);
-[; ;modbus.h: 20: unsigned int generateCRC(unsigned char);
+[; ;modbus.h: 17: void modbusDelay(void);
+[; ;modbus.h: 18: void decodeIt(void);
+[; ;modbus.h: 19: unsigned int generateCRC(unsigned char);
 [; ;system.h: 39: void ConfigInterrupts(void);
 [; ;system.h: 41: void interrupt isr(void);
 [; ;system.h: 43: void ClsUSART(void);
 [; ;system.h: 44: void OpnUSART(void);
 [; ;system.h: 46: void OpenTmr0(void);
-[; ;modbus.c: 28: extern volatile unsigned int holdingReg[50];
-[; ;modbus.c: 29: extern volatile unsigned char coils[50];
-[; ;modbus.c: 30: extern volatile unsigned char response[125];
-[; ;modbus.c: 31: extern volatile unsigned char received[125];
-[; ;modbus.c: 32: extern volatile char modbusMessage,messageLength;
-"37 modbus.c
-[v _modbusDelay `(v ~T0 @X0 1 ef ]
+"13 interrupts.c
+[v _endOfMessage `Vuc ~T0 @X0 1 e ]
+[v _newMessage `Vuc ~T0 @X0 1 e ]
+[i _newMessage
+-> -> 1 `i `uc
+]
+[; ;interrupts.c: 13: volatile char endOfMessage,newMessage = 1;
+"14
+[v _timerCount `Vuc ~T0 @X0 1 e ]
+[v _messageLength `Vuc ~T0 @X0 1 e ]
+[v _modbusMessage `Vuc ~T0 @X0 1 e ]
+[v _z `Vuc ~T0 @X0 1 e ]
+[i _z
+-> -> 0 `i `uc
+]
+[; ;interrupts.c: 14: volatile char timerCount,messageLength,modbusMessage,z = 0;
+"15
+[v _response `Vuc ~T0 @X0 -> 125 `i e ]
+[; ;interrupts.c: 15: volatile unsigned char response[125];
+"16
+[v _received `Vuc ~T0 @X0 -> 125 `i e ]
+[; ;interrupts.c: 16: volatile unsigned char received[125];
+"41 system.h
+[v F7109 `(v ~T0 @X0 1 tf ]
+"28 interrupts.c
+[v _isr `IF7109 ~T0 @X0 1 e ]
 {
-[; ;modbus.c: 36: void modbusDelay(void)
-[; ;modbus.c: 37: {
-[e :U _modbusDelay ]
+[; ;interrupts.c: 27: void interrupt isr(void)
+[; ;interrupts.c: 28: {
+[e :U _isr ]
 [f ]
-[; ;modbus.c: 39: TMR0H = 0xF5;
-"39
-[e = _TMR0H -> -> 245 `i `uc ]
-[; ;modbus.c: 40: TMR0L = 0xD7;
-"40
-[e = _TMR0L -> -> 215 `i `uc ]
-[; ;modbus.c: 41: }
-"41
-[e :UE 758 ]
+[; ;interrupts.c: 29: if(PIR1bits.RCIF){
+"29
+[e $ ! != -> . . _PIR1bits 1 3 `i -> -> -> 0 `i `Vuc `i 759  ]
+{
+[; ;interrupts.c: 30: if((!endOfMessage)&&(!newMessage)){
+"30
+[e $ ! && ! != -> _endOfMessage `i -> -> -> 0 `i `Vuc `i ! != -> _newMessage `i -> -> -> 0 `i `Vuc `i 760  ]
+{
+[; ;interrupts.c: 31: if(PIR1bits.TXIF){
+"31
+[e $ ! != -> . . _PIR1bits 1 2 `i -> -> -> 0 `i `Vuc `i 761  ]
+{
+[; ;interrupts.c: 32: received[z] = RCREG1;
+"32
+[e = *U + &U _received * -> _z `ux -> -> # *U &U _received `ui `ux _RCREG1 ]
+[; ;interrupts.c: 33: z++;
+"33
+[e ++ _z -> -> 1 `i `uc ]
+[; ;interrupts.c: 34: timerCount = 0;
+"34
+[e = _timerCount -> -> 0 `i `uc ]
+"35
 }
-"44
-[v _clearResponse `(v ~T0 @X0 1 ef ]
-{
-[; ;modbus.c: 43: void clearResponse(void)
-[; ;modbus.c: 44: {
-[e :U _clearResponse ]
-[f ]
-"45
-[v _i `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 45: unsigned char i;
-[; ;modbus.c: 46: for(i=0;i<125;i++){
-"46
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 125 `i 760  ]
-[e $U 761  ]
-[e :U 760 ]
-{
-[; ;modbus.c: 47: response[i] = 0;
-"47
-[e = *U + &U _response * -> _i `ux -> -> # *U &U _response `ui `ux -> -> 0 `i `uc ]
-"48
-}
-"46
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 125 `i 760  ]
 [e :U 761 ]
+"36
+}
+[e :U 760 ]
+[; ;interrupts.c: 35: }
+[; ;interrupts.c: 36: }
+[; ;interrupts.c: 37: if(newMessage){
+"37
+[e $ ! != -> _newMessage `i -> -> -> 0 `i `Vuc `i 762  ]
+{
+[; ;interrupts.c: 38: OpenTmr0();
+"38
+[e ( _OpenTmr0 ..  ]
+[; ;interrupts.c: 39: if(PIR1bits.TXIF){
+"39
+[e $ ! != -> . . _PIR1bits 1 2 `i -> -> -> 0 `i `Vuc `i 763  ]
+{
+[; ;interrupts.c: 40: received[z] = RCREG1;
+"40
+[e = *U + &U _received * -> _z `ux -> -> # *U &U _received `ui `ux _RCREG1 ]
+[; ;interrupts.c: 41: z++;
+"41
+[e ++ _z -> -> 1 `i `uc ]
+[; ;interrupts.c: 42: newMessage = 0;
+"42
+[e = _newMessage -> -> 0 `i `uc ]
+[; ;interrupts.c: 43: endOfMessage = 0;
+"43
+[e = _endOfMessage -> -> 0 `i `uc ]
+[; ;interrupts.c: 44: messageLength = 0;
+"44
+[e = _messageLength -> -> 0 `i `uc ]
+[; ;interrupts.c: 45: modbusMessage = 0;
+"45
+[e = _modbusMessage -> -> 0 `i `uc ]
+[; ;interrupts.c: 46: timerCount = 0;
+"46
+[e = _timerCount -> -> 0 `i `uc ]
+[; ;interrupts.c: 47: return;
+"47
+[e $UE 758  ]
 "48
 }
-[; ;modbus.c: 48: }
-[; ;modbus.c: 49: }
+[e :U 763 ]
 "49
-[e :UE 759 ]
 }
+[e :U 762 ]
+"50
+}
+[; ;interrupts.c: 48: }
+[; ;interrupts.c: 49: }
+[; ;interrupts.c: 50: }
+[e $U 764  ]
+"51
+[e :U 759 ]
+[; ;interrupts.c: 51: else if(INTCONbits.TMR0IF){
+[e $ ! != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i 765  ]
+{
+[; ;interrupts.c: 52: modbusDelay();
 "52
-[v _decodeIt `(v ~T0 @X0 1 ef ]
-{
-[; ;modbus.c: 51: void decodeIt(void)
-[; ;modbus.c: 52: {
-[e :U _decodeIt ]
-[f ]
-[; ;modbus.c: 53: if(received[0] == 2){
+[e ( _modbusDelay ..  ]
+[; ;interrupts.c: 53: timerCount++;
 "53
-[e $ ! == -> *U + &U _received * -> -> -> 0 `i `ui `ux -> -> # *U &U _received `ui `ux `i -> 2 `i 764  ]
-{
-[; ;modbus.c: 54: if(checkCRC()){
+[e ++ _timerCount -> -> 1 `i `uc ]
+[; ;interrupts.c: 54: if(timerCount > 4){
 "54
-[e $ ! != -> ( _checkCRC ..  `i -> -> -> 0 `i `uc `i 765  ]
+[e $ ! > -> _timerCount `i -> 4 `i 766  ]
 {
-[; ;modbus.c: 55: if(received[1] == 0x01){
+[; ;interrupts.c: 55: endOfMessage = 1;
 "55
-[e $ ! == -> *U + &U _received * -> -> -> 1 `i `ui `ux -> -> # *U &U _received `ui `ux `i -> 1 `i 766  ]
-{
-[; ;modbus.c: 56: readCoil();
+[e = _endOfMessage -> -> 1 `i `uc ]
+[; ;interrupts.c: 56: newMessage = 1;
 "56
-[e ( _readCoil ..  ]
+[e = _newMessage -> -> 1 `i `uc ]
+[; ;interrupts.c: 57: messageLength = z;
 "57
-}
-[; ;modbus.c: 57: }
-[e $U 767  ]
+[e = _messageLength _z ]
+[; ;interrupts.c: 58: modbusMessage = 1;
 "58
-[e :U 766 ]
-[; ;modbus.c: 58: else if(received[1] == 0x02){
-[e $ ! == -> *U + &U _received * -> -> -> 1 `i `ui `ux -> -> # *U &U _received `ui `ux `i -> 2 `i 768  ]
-{
-[; ;modbus.c: 59: readInputCoil();
+[e = _modbusMessage -> -> 1 `i `uc ]
+[; ;interrupts.c: 59: for(z=(messageLength);z!=125;z++){
 "59
-[e ( _readInputCoil ..  ]
-"60
-}
-[; ;modbus.c: 60: }
-[e $U 769  ]
-"61
-[e :U 768 ]
-[; ;modbus.c: 61: else if(received[1] == 0x03){
-[e $ ! == -> *U + &U _received * -> -> -> 1 `i `ui `ux -> -> # *U &U _received `ui `ux `i -> 3 `i 770  ]
 {
-[; ;modbus.c: 62: readReg();
-"62
-[e ( _readReg ..  ]
-"63
-}
-[; ;modbus.c: 63: }
-[e $U 771  ]
-"64
-[e :U 770 ]
-[; ;modbus.c: 64: else if(received[1] == 0x04){
-[e $ ! == -> *U + &U _received * -> -> -> 1 `i `ui `ux -> -> # *U &U _received `ui `ux `i -> 4 `i 772  ]
-{
-[; ;modbus.c: 65: readInputReg();
-"65
-[e ( _readInputReg ..  ]
-"66
-}
-[; ;modbus.c: 66: }
-[e $U 773  ]
-"67
-[e :U 772 ]
-[; ;modbus.c: 67: else if(received[1] == 0x05){
-[e $ ! == -> *U + &U _received * -> -> -> 1 `i `ui `ux -> -> # *U &U _received `ui `ux `i -> 5 `i 774  ]
-{
-[; ;modbus.c: 68: writeCoil();
-"68
-[e ( _writeCoil ..  ]
-"69
-}
-[; ;modbus.c: 69: }
-[e $U 775  ]
-"70
-[e :U 774 ]
-[; ;modbus.c: 70: else if(received[1] == 0x06){
-[e $ ! == -> *U + &U _received * -> -> -> 1 `i `ui `ux -> -> # *U &U _received `ui `ux `i -> 6 `i 776  ]
-{
-[; ;modbus.c: 71: writeReg();
-"71
-[e ( _writeReg ..  ]
-"72
-}
-[; ;modbus.c: 72: }
-[e $U 777  ]
-"73
-[e :U 776 ]
-[; ;modbus.c: 73: else if(received[1] == 0x10){
-[e $ ! == -> *U + &U _received * -> -> -> 1 `i `ui `ux -> -> # *U &U _received `ui `ux `i -> 16 `i 778  ]
-{
-[; ;modbus.c: 74: writeMultipleRegs();
-"74
-[e ( _writeMultipleRegs ..  ]
-"75
-}
-[; ;modbus.c: 75: }
-[e $U 779  ]
-"76
-[e :U 778 ]
-[; ;modbus.c: 76: else if(received[1] == 0x0F){
-[e $ ! == -> *U + &U _received * -> -> -> 1 `i `ui `ux -> -> # *U &U _received `ui `ux `i -> 15 `i 780  ]
-{
-[; ;modbus.c: 77: writeMultipleCoils();
-"77
-[e ( _writeMultipleCoils ..  ]
-"78
-}
-[; ;modbus.c: 78: }
-[e $U 781  ]
-"79
-[e :U 780 ]
-[; ;modbus.c: 79: else{
-{
-[; ;modbus.c: 80: response[0] = 0;
-"80
-[e = *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 0 `i `uc ]
-"81
-}
-[e :U 781 ]
-[e :U 779 ]
-[e :U 777 ]
-[e :U 775 ]
-[e :U 773 ]
-[e :U 771 ]
-[e :U 769 ]
+[e = _z _messageLength ]
+[e $U 770  ]
 [e :U 767 ]
-"82
+{
+[; ;interrupts.c: 60: received[z] = 0;
+"60
+[e = *U + &U _received * -> _z `ux -> -> # *U &U _received `ui `ux -> -> 0 `i `uc ]
+"61
+}
+"59
+[e ++ _z -> -> 1 `i `uc ]
+[e :U 770 ]
+[e $ != -> _z `i -> 125 `i 767  ]
+[e :U 768 ]
+"61
+}
+[; ;interrupts.c: 61: }
+[; ;interrupts.c: 62: z=0;
+"62
+[e = _z -> -> 0 `i `uc ]
+[; ;interrupts.c: 63: T0CONbits.TMR0ON = 0;
+"63
+[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
+[; ;interrupts.c: 64: timerCount = 0;
+"64
+[e = _timerCount -> -> 0 `i `uc ]
+"65
+}
+[e :U 766 ]
+[; ;interrupts.c: 65: }
+[; ;interrupts.c: 66: INTCONbits.TMR0IF = 0;
+"66
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"67
 }
 [e :U 765 ]
-"83
-}
+"68
 [e :U 764 ]
-[; ;modbus.c: 81: }
-[; ;modbus.c: 82: }
-[; ;modbus.c: 83: }
-[; ;modbus.c: 84: modbusMessage = 0;
-"84
-[e = _modbusMessage -> -> 0 `i `uc ]
-[; ;modbus.c: 85: }
-"85
-[e :UE 763 ]
-}
-"88
-[v _readReg `(v ~T0 @X0 1 ef ]
-{
-[; ;modbus.c: 87: void readReg(void)
-[; ;modbus.c: 88: {
-[e :U _readReg ]
-[f ]
-"89
-[v _rr_Address `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 89: unsigned int rr_Address = 0;
-[e = _rr_Address -> -> 0 `i `ui ]
-"90
-[v _rr_numRegs `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 90: unsigned int rr_numRegs = 0;
-[e = _rr_numRegs -> -> 0 `i `ui ]
-"91
-[v _j `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 91: unsigned char j = 3;
-[e = _j -> -> 3 `i `uc ]
-"92
-[v _crc `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 92: unsigned int crc = 0;
-[e = _crc -> -> 0 `i `ui ]
-"93
-[v _i `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 93: unsigned int i = 0;
-[e = _i -> -> 0 `i `ui ]
-[; ;modbus.c: 96: rr_Address = received[2];
-"96
-[e = _rr_Address -> *U + &U _received * -> -> -> 2 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 97: rr_Address <<= 8;
-"97
-[e =<< _rr_Address -> 8 `i ]
-[; ;modbus.c: 98: rr_Address |= received[3];
-"98
-[e =| _rr_Address -> *U + &U _received * -> -> -> 3 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 101: rr_numRegs = received[4];
-"101
-[e = _rr_numRegs -> *U + &U _received * -> -> -> 4 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 102: rr_numRegs <<= 8;
-"102
-[e =<< _rr_numRegs -> 8 `i ]
-[; ;modbus.c: 103: rr_numRegs |= received[5];
-"103
-[e =| _rr_numRegs -> *U + &U _received * -> -> -> 5 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 105: response[0] = 2;
-"105
-[e = *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 2 `i `uc ]
-[; ;modbus.c: 106: response[1] = 0x03;
-"106
-[e = *U + &U _response * -> -> -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 3 `i `uc ]
-[; ;modbus.c: 107: response[2] = rr_numRegs*2;
-"107
-[e = *U + &U _response * -> -> -> 2 `i `ui `ux -> -> # *U &U _response `ui `ux -> * _rr_numRegs -> -> 2 `i `ui `uc ]
-[; ;modbus.c: 109: for(i=rr_Address;i<(rr_Address + rr_numRegs);i++){
-"109
-{
-[e = _i _rr_Address ]
-[e $U 786  ]
-[e :U 783 ]
-{
-[; ;modbus.c: 110: if(holdingReg[i] > 255){
-"110
-[e $ ! > *U + &U _holdingReg * -> _i `ux -> -> # *U &U _holdingReg `ui `ux -> -> 255 `i `ui 787  ]
-{
-[; ;modbus.c: 112: response[j] = holdingReg[i] >> 8;
-"112
-[e = *U + &U _response * -> _j `ux -> -> # *U &U _response `ui `ux -> >> *U + &U _holdingReg * -> _i `ux -> -> # *U &U _holdingReg `ui `ux -> 8 `i `uc ]
-[; ;modbus.c: 113: j++;
-"113
-[e ++ _j -> -> 1 `i `uc ]
-[; ;modbus.c: 114: response[j] = holdingReg[i];
-"114
-[e = *U + &U _response * -> _j `ux -> -> # *U &U _response `ui `ux -> *U + &U _holdingReg * -> _i `ux -> -> # *U &U _holdingReg `ui `ux `uc ]
-[; ;modbus.c: 115: j++;
-"115
-[e ++ _j -> -> 1 `i `uc ]
-"116
-}
-[; ;modbus.c: 116: }
-[e $U 788  ]
-"117
-[e :U 787 ]
-[; ;modbus.c: 117: else{
-{
-[; ;modbus.c: 118: response[j] = 0x00;
-"118
-[e = *U + &U _response * -> _j `ux -> -> # *U &U _response `ui `ux -> -> 0 `i `uc ]
-[; ;modbus.c: 119: j++;
-"119
-[e ++ _j -> -> 1 `i `uc ]
-[; ;modbus.c: 120: response[j] = holdingReg[i];
-"120
-[e = *U + &U _response * -> _j `ux -> -> # *U &U _response `ui `ux -> *U + &U _holdingReg * -> _i `ux -> -> # *U &U _holdingReg `ui `ux `uc ]
-[; ;modbus.c: 121: j++;
-"121
-[e ++ _j -> -> 1 `i `uc ]
-"122
-}
-[e :U 788 ]
-"123
-}
-"109
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 786 ]
-[e $ < _i + _rr_Address _rr_numRegs 783  ]
-[e :U 784 ]
-"123
-}
-[; ;modbus.c: 122: }
-[; ;modbus.c: 123: }
-[; ;modbus.c: 124: crc = generateCRC(j+2);
-"124
-[e = _crc ( _generateCRC (1 -> + -> _j `i -> 2 `i `uc ]
-[; ;modbus.c: 125: response[j] = crc >> 8;
-"125
-[e = *U + &U _response * -> _j `ux -> -> # *U &U _response `ui `ux -> >> _crc -> 8 `i `uc ]
-[; ;modbus.c: 126: j++;
-"126
-[e ++ _j -> -> 1 `i `uc ]
-[; ;modbus.c: 127: response[j] = crc;
-"127
-[e = *U + &U _response * -> _j `ux -> -> # *U &U _response `ui `ux -> _crc `uc ]
-[; ;modbus.c: 128: j+=2;
-"128
-[e =+ _j -> -> 2 `i `uc ]
-[; ;modbus.c: 130: LATCbits.LATC1 = 1;
-"130
-[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
-[; ;modbus.c: 131: for(i=0;i!=j;i++){
-"131
-{
-[e = _i -> -> 0 `i `ui ]
-[e $U 792  ]
-[e :U 789 ]
-{
-[; ;modbus.c: 132: while((!TXSTA1bits.TRMT));
-"132
-[e $U 793  ]
-[e :U 794 ]
-[e :U 793 ]
-[e $ ! != -> . . _TXSTA1bits 0 1 `i -> -> -> 0 `i `Vuc `i 794  ]
-[e :U 795 ]
-[; ;modbus.c: 133: TXREG1 = response[i];
-"133
-[e = _TXREG1 *U + &U _response * -> _i `ux -> -> # *U &U _response `ui `ux ]
-"134
-}
-"131
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 792 ]
-[e $ != _i -> _j `ui 789  ]
-[e :U 790 ]
-"134
-}
-[; ;modbus.c: 134: }
-[; ;modbus.c: 135: LATCbits.LATC1 = 0;
-"135
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;modbus.c: 136: j=0;
-"136
-[e = _j -> -> 0 `i `uc ]
-[; ;modbus.c: 138: clearResponse();
-"138
-[e ( _clearResponse ..  ]
-[; ;modbus.c: 139: }
-"139
-[e :UE 782 ]
-}
-"142
-[v _readInputReg `(v ~T0 @X0 1 ef ]
-{
-[; ;modbus.c: 141: void readInputReg(void)
-[; ;modbus.c: 142: {
-[e :U _readInputReg ]
-[f ]
-"143
-[v _rr_Address `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 143: unsigned int rr_Address = 0;
-[e = _rr_Address -> -> 0 `i `ui ]
-"144
-[v _rr_numRegs `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 144: unsigned int rr_numRegs = 0;
-[e = _rr_numRegs -> -> 0 `i `ui ]
-"145
-[v _j `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 145: unsigned char j = 3;
-[e = _j -> -> 3 `i `uc ]
-"146
-[v _crc `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 146: unsigned int crc = 0;
-[e = _crc -> -> 0 `i `ui ]
-"147
-[v _i `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 147: unsigned int i = 0;
-[e = _i -> -> 0 `i `ui ]
-[; ;modbus.c: 150: rr_Address = received[2];
-"150
-[e = _rr_Address -> *U + &U _received * -> -> -> 2 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 151: rr_Address <<= 8;
-"151
-[e =<< _rr_Address -> 8 `i ]
-[; ;modbus.c: 152: rr_Address |= received[3];
-"152
-[e =| _rr_Address -> *U + &U _received * -> -> -> 3 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 155: rr_numRegs = received[4];
-"155
-[e = _rr_numRegs -> *U + &U _received * -> -> -> 4 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 156: rr_numRegs <<= 8;
-"156
-[e =<< _rr_numRegs -> 8 `i ]
-[; ;modbus.c: 157: rr_numRegs |= received[5];
-"157
-[e =| _rr_numRegs -> *U + &U _received * -> -> -> 5 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 159: response[0] = 2;
-"159
-[e = *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 2 `i `uc ]
-[; ;modbus.c: 160: response[1] = 0x04;
-"160
-[e = *U + &U _response * -> -> -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 4 `i `uc ]
-[; ;modbus.c: 161: response[2] = rr_numRegs*2;
-"161
-[e = *U + &U _response * -> -> -> 2 `i `ui `ux -> -> # *U &U _response `ui `ux -> * _rr_numRegs -> -> 2 `i `ui `uc ]
-[; ;modbus.c: 163: for(i=rr_Address;i<(rr_Address + rr_numRegs);i++){
-"163
-{
-[e = _i _rr_Address ]
-[e $U 800  ]
-[e :U 797 ]
-{
-[; ;modbus.c: 164: if(holdingReg[i] > 255){
-"164
-[e $ ! > *U + &U _holdingReg * -> _i `ux -> -> # *U &U _holdingReg `ui `ux -> -> 255 `i `ui 801  ]
-{
-[; ;modbus.c: 166: response[j] = holdingReg[i] >> 8;
-"166
-[e = *U + &U _response * -> _j `ux -> -> # *U &U _response `ui `ux -> >> *U + &U _holdingReg * -> _i `ux -> -> # *U &U _holdingReg `ui `ux -> 8 `i `uc ]
-[; ;modbus.c: 167: j++;
-"167
-[e ++ _j -> -> 1 `i `uc ]
-[; ;modbus.c: 168: response[j] = holdingReg[i];
-"168
-[e = *U + &U _response * -> _j `ux -> -> # *U &U _response `ui `ux -> *U + &U _holdingReg * -> _i `ux -> -> # *U &U _holdingReg `ui `ux `uc ]
-[; ;modbus.c: 169: j++;
-"169
-[e ++ _j -> -> 1 `i `uc ]
-"170
-}
-[; ;modbus.c: 170: }
-[e $U 802  ]
-"171
-[e :U 801 ]
-[; ;modbus.c: 171: else{
-{
-[; ;modbus.c: 172: response[j] = 0x00;
-"172
-[e = *U + &U _response * -> _j `ux -> -> # *U &U _response `ui `ux -> -> 0 `i `uc ]
-[; ;modbus.c: 173: j++;
-"173
-[e ++ _j -> -> 1 `i `uc ]
-[; ;modbus.c: 174: response[j] = holdingReg[i];
-"174
-[e = *U + &U _response * -> _j `ux -> -> # *U &U _response `ui `ux -> *U + &U _holdingReg * -> _i `ux -> -> # *U &U _holdingReg `ui `ux `uc ]
-[; ;modbus.c: 175: j++;
-"175
-[e ++ _j -> -> 1 `i `uc ]
-"176
-}
-[e :U 802 ]
-"177
-}
-"163
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 800 ]
-[e $ < _i + _rr_Address _rr_numRegs 797  ]
-[e :U 798 ]
-"177
-}
-[; ;modbus.c: 176: }
-[; ;modbus.c: 177: }
-[; ;modbus.c: 178: crc = generateCRC(j+2);
-"178
-[e = _crc ( _generateCRC (1 -> + -> _j `i -> 2 `i `uc ]
-[; ;modbus.c: 179: response[j] = crc >> 8;
-"179
-[e = *U + &U _response * -> _j `ux -> -> # *U &U _response `ui `ux -> >> _crc -> 8 `i `uc ]
-[; ;modbus.c: 180: j++;
-"180
-[e ++ _j -> -> 1 `i `uc ]
-[; ;modbus.c: 181: response[j] = crc;
-"181
-[e = *U + &U _response * -> _j `ux -> -> # *U &U _response `ui `ux -> _crc `uc ]
-[; ;modbus.c: 182: j+=2;
-"182
-[e =+ _j -> -> 2 `i `uc ]
-[; ;modbus.c: 184: LATCbits.LATC1 = 1;
-"184
-[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
-[; ;modbus.c: 185: for(i=0;i!=j;i++){
-"185
-{
-[e = _i -> -> 0 `i `ui ]
-[e $U 806  ]
-[e :U 803 ]
-{
-[; ;modbus.c: 186: while((!TXSTA1bits.TRMT));
-"186
-[e $U 807  ]
-[e :U 808 ]
-[e :U 807 ]
-[e $ ! != -> . . _TXSTA1bits 0 1 `i -> -> -> 0 `i `Vuc `i 808  ]
-[e :U 809 ]
-[; ;modbus.c: 187: TXREG1 = response[i];
-"187
-[e = _TXREG1 *U + &U _response * -> _i `ux -> -> # *U &U _response `ui `ux ]
-"188
-}
-"185
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 806 ]
-[e $ != _i -> _j `ui 803  ]
-[e :U 804 ]
-"188
-}
-[; ;modbus.c: 188: }
-[; ;modbus.c: 189: LATCbits.LATC1 = 0;
-"189
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;modbus.c: 190: j=0;
-"190
-[e = _j -> -> 0 `i `uc ]
-[; ;modbus.c: 192: clearResponse();
-"192
-[e ( _clearResponse ..  ]
-[; ;modbus.c: 193: }
-"193
-[e :UE 796 ]
-}
-"196
-[v _writeReg `(v ~T0 @X0 1 ef ]
-{
-[; ;modbus.c: 195: void writeReg(void)
-[; ;modbus.c: 196: {
-[e :U _writeReg ]
-[f ]
-"200
-[v _wr_AddressLow `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 200: unsigned int wr_AddressLow = 0;
-[e = _wr_AddressLow -> -> 0 `i `ui ]
-"201
-[v _wr_AddressHigh `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 201: unsigned int wr_AddressHigh = 0;
-[e = _wr_AddressHigh -> -> 0 `i `ui ]
-"202
-[v _wr_Address `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 202: unsigned int wr_Address = 0;
-[e = _wr_Address -> -> 0 `i `ui ]
-"204
-[v _wr_valToWrite `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 204: unsigned int wr_valToWrite = 0;
-[e = _wr_valToWrite -> -> 0 `i `ui ]
-"205
-[v _wr_valToWriteLow `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 205: unsigned int wr_valToWriteLow = 0;
-[e = _wr_valToWriteLow -> -> 0 `i `ui ]
-"206
-[v _wr_valToWriteHigh `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 206: unsigned int wr_valToWriteHigh = 0;
-[e = _wr_valToWriteHigh -> -> 0 `i `ui ]
-"208
-[v _crc `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 208: unsigned int crc = 0;
-[e = _crc -> -> 0 `i `ui ]
-"209
-[v _i `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 209: unsigned int i = 0;
-[e = _i -> -> 0 `i `ui ]
-[; ;modbus.c: 212: wr_Address = received[2];
-"212
-[e = _wr_Address -> *U + &U _received * -> -> -> 2 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 213: wr_Address <<= 8;
-"213
-[e =<< _wr_Address -> 8 `i ]
-[; ;modbus.c: 214: wr_Address |= received[3];
-"214
-[e =| _wr_Address -> *U + &U _received * -> -> -> 3 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 216: wr_AddressLow = received[3];
-"216
-[e = _wr_AddressLow -> *U + &U _received * -> -> -> 3 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 217: wr_AddressHigh = received[2];
-"217
-[e = _wr_AddressHigh -> *U + &U _received * -> -> -> 2 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 220: wr_valToWrite = received[4];
-"220
-[e = _wr_valToWrite -> *U + &U _received * -> -> -> 4 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 221: wr_valToWrite <<= 8;
-"221
-[e =<< _wr_valToWrite -> 8 `i ]
-[; ;modbus.c: 222: wr_valToWrite |= received[5];
-"222
-[e =| _wr_valToWrite -> *U + &U _received * -> -> -> 5 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 224: wr_valToWriteLow = received[5];
-"224
-[e = _wr_valToWriteLow -> *U + &U _received * -> -> -> 5 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 225: wr_valToWriteHigh = received[4];
-"225
-[e = _wr_valToWriteHigh -> *U + &U _received * -> -> -> 4 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 227: holdingReg[wr_Address] = wr_valToWrite;
-"227
-[e = *U + &U _holdingReg * -> _wr_Address `ux -> -> # *U &U _holdingReg `ui `ux _wr_valToWrite ]
-[; ;modbus.c: 229: response[0] = 2;
-"229
-[e = *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 2 `i `uc ]
-[; ;modbus.c: 230: response[1] = 0x06;
-"230
-[e = *U + &U _response * -> -> -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 6 `i `uc ]
-[; ;modbus.c: 231: response[3] = wr_AddressLow;
-"231
-[e = *U + &U _response * -> -> -> 3 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wr_AddressLow `uc ]
-[; ;modbus.c: 232: response[2] = wr_AddressHigh;
-"232
-[e = *U + &U _response * -> -> -> 2 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wr_AddressHigh `uc ]
-[; ;modbus.c: 235: response[4] = wr_valToWriteHigh;
-"235
-[e = *U + &U _response * -> -> -> 4 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wr_valToWriteHigh `uc ]
-[; ;modbus.c: 236: response[5] = wr_valToWriteLow;
-"236
-[e = *U + &U _response * -> -> -> 5 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wr_valToWriteLow `uc ]
-[; ;modbus.c: 238: crc = generateCRC(8);
-"238
-[e = _crc ( _generateCRC (1 -> -> 8 `i `uc ]
-[; ;modbus.c: 240: response[6] = crc >> 8;
-"240
-[e = *U + &U _response * -> -> -> 6 `i `ui `ux -> -> # *U &U _response `ui `ux -> >> _crc -> 8 `i `uc ]
-[; ;modbus.c: 241: response[7] = crc;
-"241
-[e = *U + &U _response * -> -> -> 7 `i `ui `ux -> -> # *U &U _response `ui `ux -> _crc `uc ]
-[; ;modbus.c: 243: LATCbits.LATC1 = 1;
-"243
-[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
-[; ;modbus.c: 244: for(i=0;i!=9;i++){
-"244
-{
-[e = _i -> -> 0 `i `ui ]
-[e $ != _i -> -> 9 `i `ui 811  ]
-[e $U 812  ]
-[e :U 811 ]
-{
-[; ;modbus.c: 245: while((!TXSTA1bits.TRMT));
-"245
-[e $U 814  ]
-[e :U 815 ]
-[e :U 814 ]
-[e $ ! != -> . . _TXSTA1bits 0 1 `i -> -> -> 0 `i `Vuc `i 815  ]
-[e :U 816 ]
-[; ;modbus.c: 246: TXREG1 = response[i];
-"246
-[e = _TXREG1 *U + &U _response * -> _i `ux -> -> # *U &U _response `ui `ux ]
-"247
-}
-"244
-[e ++ _i -> -> 1 `i `ui ]
-[e $ != _i -> -> 9 `i `ui 811  ]
-[e :U 812 ]
-"247
-}
-[; ;modbus.c: 247: }
-[; ;modbus.c: 248: LATCbits.LATC1 = 0;
-"248
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;modbus.c: 249: clearResponse();
-"249
-[e ( _clearResponse ..  ]
-[; ;modbus.c: 250: }
-"250
-[e :UE 810 ]
-}
-"253
-[v _writeMultipleRegs `(v ~T0 @X0 1 ef ]
-{
-[; ;modbus.c: 252: void writeMultipleRegs(void)
-[; ;modbus.c: 253: {
-[e :U _writeMultipleRegs ]
-[f ]
-"257
-[v _wmr_Address `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 257: unsigned int wmr_Address = 0;
-[e = _wmr_Address -> -> 0 `i `ui ]
-"258
-[v _wmr_AddressHigh `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 258: unsigned int wmr_AddressHigh = 0;
-[e = _wmr_AddressHigh -> -> 0 `i `ui ]
-"259
-[v _wmr_AddressLow `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 259: unsigned int wmr_AddressLow = 0;
-[e = _wmr_AddressLow -> -> 0 `i `ui ]
-"260
-[v _wmr_numRegs `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 260: unsigned int wmr_numRegs = 0;
-[e = _wmr_numRegs -> -> 0 `i `ui ]
-"261
-[v _wmr_numRegsHigh `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 261: unsigned int wmr_numRegsHigh = 0;
-[e = _wmr_numRegsHigh -> -> 0 `i `ui ]
-"262
-[v _wmr_numRegsLow `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 262: unsigned int wmr_numRegsLow = 0;
-[e = _wmr_numRegsLow -> -> 0 `i `ui ]
-"263
-[v _wmr_numBytes `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 263: unsigned int wmr_numBytes = 0;
-[e = _wmr_numBytes -> -> 0 `i `ui ]
-"264
-[v _valToWrite `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 264: unsigned int valToWrite = 0;
-[e = _valToWrite -> -> 0 `i `ui ]
-"265
-[v _valToWriteHigh `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 265: unsigned int valToWriteHigh = 0;
-[e = _valToWriteHigh -> -> 0 `i `ui ]
-"266
-[v _valToWriteLow `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 266: unsigned int valToWriteLow = 0;
-[e = _valToWriteLow -> -> 0 `i `ui ]
-"268
-[v _j `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 268: unsigned char j = 0;
-[e = _j -> -> 0 `i `uc ]
-"269
-[v _crc `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 269: unsigned int crc = 0;
-[e = _crc -> -> 0 `i `ui ]
-"270
-[v _i `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 270: unsigned int i = 0;
-[e = _i -> -> 0 `i `ui ]
-[; ;modbus.c: 273: wmr_Address = received[2];
-"273
-[e = _wmr_Address -> *U + &U _received * -> -> -> 2 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 274: wmr_Address <<= 8;
-"274
-[e =<< _wmr_Address -> 8 `i ]
-[; ;modbus.c: 276: wmr_Address |= received[3];
-"276
-[e =| _wmr_Address -> *U + &U _received * -> -> -> 3 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 277: wmr_AddressHigh = received[2];
-"277
-[e = _wmr_AddressHigh -> *U + &U _received * -> -> -> 2 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 278: wmr_AddressLow = received[3];
-"278
-[e = _wmr_AddressLow -> *U + &U _received * -> -> -> 3 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 282: wmr_numRegs = received[4];
-"282
-[e = _wmr_numRegs -> *U + &U _received * -> -> -> 4 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 283: wmr_numRegs <<= 8;
-"283
-[e =<< _wmr_numRegs -> 8 `i ]
-[; ;modbus.c: 284: wmr_numRegs |= received[5];
-"284
-[e =| _wmr_numRegs -> *U + &U _received * -> -> -> 5 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 285: wmr_numRegsHigh = received[4];
-"285
-[e = _wmr_numRegsHigh -> *U + &U _received * -> -> -> 4 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 286: wmr_numRegsLow = received[5];
-"286
-[e = _wmr_numRegsLow -> *U + &U _received * -> -> -> 5 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 288: wmr_numBytes = received[6];
-"288
-[e = _wmr_numBytes -> *U + &U _received * -> -> -> 6 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 290: j = 7;
-"290
-[e = _j -> -> 7 `i `uc ]
-[; ;modbus.c: 292: for(i=0;i<wmr_numBytes;i++)
-"292
-{
-[e = _i -> -> 0 `i `ui ]
-[e $U 821  ]
-"293
-[e :U 818 ]
-[; ;modbus.c: 293: {
-{
-[; ;modbus.c: 294: valToWrite = received[j];
-"294
-[e = _valToWrite -> *U + &U _received * -> _j `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 295: valToWrite <<= 8;
-"295
-[e =<< _valToWrite -> 8 `i ]
-[; ;modbus.c: 296: j++;
-"296
-[e ++ _j -> -> 1 `i `uc ]
-[; ;modbus.c: 297: valToWrite |= received[j];
-"297
-[e =| _valToWrite -> *U + &U _received * -> _j `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 298: j++;
-"298
-[e ++ _j -> -> 1 `i `uc ]
-[; ;modbus.c: 300: holdingReg[wmr_Address + i] = valToWrite;
-"300
-[e = *U + &U _holdingReg * -> + _wmr_Address _i `ux -> -> # *U &U _holdingReg `ui `ux _valToWrite ]
-"301
-}
-"292
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 821 ]
-[e $ < _i _wmr_numBytes 818  ]
-[e :U 819 ]
-"301
-}
-[; ;modbus.c: 301: }
-[; ;modbus.c: 304: response[0] = 2;
-"304
-[e = *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 2 `i `uc ]
-[; ;modbus.c: 305: response[1] = 0x10;
-"305
-[e = *U + &U _response * -> -> -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 16 `i `uc ]
-[; ;modbus.c: 306: response[2] = wmr_AddressHigh;
-"306
-[e = *U + &U _response * -> -> -> 2 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wmr_AddressHigh `uc ]
-[; ;modbus.c: 307: response[3] = wmr_AddressLow;
-"307
-[e = *U + &U _response * -> -> -> 3 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wmr_AddressLow `uc ]
-[; ;modbus.c: 308: response[4] = wmr_numRegsHigh;
-"308
-[e = *U + &U _response * -> -> -> 4 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wmr_numRegsHigh `uc ]
-[; ;modbus.c: 309: response[5] = wmr_numRegsLow;
-"309
-[e = *U + &U _response * -> -> -> 5 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wmr_numRegsLow `uc ]
-[; ;modbus.c: 311: crc = generateCRC(8);
-"311
-[e = _crc ( _generateCRC (1 -> -> 8 `i `uc ]
-[; ;modbus.c: 313: response[6] = crc >> 8;
-"313
-[e = *U + &U _response * -> -> -> 6 `i `ui `ux -> -> # *U &U _response `ui `ux -> >> _crc -> 8 `i `uc ]
-[; ;modbus.c: 314: response[7] = crc;
-"314
-[e = *U + &U _response * -> -> -> 7 `i `ui `ux -> -> # *U &U _response `ui `ux -> _crc `uc ]
-[; ;modbus.c: 316: LATCbits.LATC1 = 1;
-"316
-[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
-[; ;modbus.c: 317: for(i=0;i!=9;i++){
-"317
-{
-[e = _i -> -> 0 `i `ui ]
-[e $ != _i -> -> 9 `i `ui 822  ]
-[e $U 823  ]
-[e :U 822 ]
-{
-[; ;modbus.c: 318: while((!TXSTA1bits.TRMT));
-"318
-[e $U 825  ]
-[e :U 826 ]
-[e :U 825 ]
-[e $ ! != -> . . _TXSTA1bits 0 1 `i -> -> -> 0 `i `Vuc `i 826  ]
-[e :U 827 ]
-[; ;modbus.c: 319: TXREG1 = response[i];
-"319
-[e = _TXREG1 *U + &U _response * -> _i `ux -> -> # *U &U _response `ui `ux ]
-"320
-}
-"317
-[e ++ _i -> -> 1 `i `ui ]
-[e $ != _i -> -> 9 `i `ui 822  ]
-[e :U 823 ]
-"320
-}
-[; ;modbus.c: 320: }
-[; ;modbus.c: 321: LATCbits.LATC1 = 0;
-"321
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;modbus.c: 322: j=0;
-"322
-[e = _j -> -> 0 `i `uc ]
-[; ;modbus.c: 324: clearResponse();
-"324
-[e ( _clearResponse ..  ]
-[; ;modbus.c: 326: }
-"326
-[e :UE 817 ]
-}
-"330
-[v _readCoil `(v ~T0 @X0 1 ef ]
-{
-[; ;modbus.c: 329: void readCoil(void)
-[; ;modbus.c: 330: {
-[e :U _readCoil ]
-[f ]
-"334
-[v _rc_Address `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 334: unsigned int rc_Address = 0;
-[e = _rc_Address -> -> 0 `i `ui ]
-"335
-[v _rc_numCoils `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 335: unsigned int rc_numCoils = 0;
-[e = _rc_numCoils -> -> 0 `i `ui ]
-"336
-[v _crc `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 336: unsigned int crc = 0;
-[e = _crc -> -> 0 `i `ui ]
-"338
-[v _howManyBytes `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 338: unsigned char howManyBytes = 0;
-[e = _howManyBytes -> -> 0 `i `uc ]
-"339
-[v _remainder `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 339: unsigned char remainder = 0;
-[e = _remainder -> -> 0 `i `uc ]
-"340
-[v _lsb `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 340: unsigned char lsb = 0;
-[e = _lsb -> -> 0 `i `uc ]
-"341
-[v _i `uc ~T0 @X0 1 a ]
-[v _j `uc ~T0 @X0 1 a ]
-[v _k `uc ~T0 @X0 1 a ]
-[v _l `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 341: unsigned char i,j,k,l = 0;
-[e = _l -> -> 0 `i `uc ]
-[; ;modbus.c: 344: rc_Address = received[2];
-"344
-[e = _rc_Address -> *U + &U _received * -> -> -> 2 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 345: rc_Address <<=8;
-"345
-[e =<< _rc_Address -> 8 `i ]
-[; ;modbus.c: 346: rc_Address |= received[3];
-"346
-[e =| _rc_Address -> *U + &U _received * -> -> -> 3 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 349: rc_numCoils = received[4];
-"349
-[e = _rc_numCoils -> *U + &U _received * -> -> -> 4 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 350: rc_numCoils <<= 8;
-"350
-[e =<< _rc_numCoils -> 8 `i ]
-[; ;modbus.c: 351: rc_numCoils |= received[5];
-"351
-[e =| _rc_numCoils -> *U + &U _received * -> -> -> 5 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 353: response[0] = 2;
-"353
-[e = *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 2 `i `uc ]
-[; ;modbus.c: 354: response[1] = 0x01;
-"354
-[e = *U + &U _response * -> -> -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 1 `i `uc ]
-[; ;modbus.c: 356: howManyBytes = rc_numCoils/8;
-"356
-[e = _howManyBytes -> / _rc_numCoils -> -> 8 `i `ui `uc ]
-[; ;modbus.c: 357: remainder = rc_numCoils % 8;
-"357
-[e = _remainder -> % _rc_numCoils -> -> 8 `i `ui `uc ]
-[; ;modbus.c: 359: if(remainder){
-"359
-[e $ ! != -> _remainder `i -> -> -> 0 `i `uc `i 829  ]
-{
-[; ;modbus.c: 360: howManyBytes += 1;
-"360
-[e =+ _howManyBytes -> -> 1 `i `uc ]
-"361
-}
-[e :U 829 ]
-[; ;modbus.c: 361: }
-[; ;modbus.c: 362: response[2] = howManyBytes;
-"362
-[e = *U + &U _response * -> -> -> 2 `i `ui `ux -> -> # *U &U _response `ui `ux _howManyBytes ]
-[; ;modbus.c: 364: l = rc_Address;
-"364
-[e = _l -> _rc_Address `uc ]
-[; ;modbus.c: 365: k = 3;
-"365
-[e = _k -> -> 3 `i `uc ]
-[; ;modbus.c: 367: for(i=howManyBytes; i!=0; i--){
-"367
-{
-[e = _i _howManyBytes ]
-[e $ != -> _i `i -> 0 `i 830  ]
-[e $U 831  ]
-[e :U 830 ]
-{
-[; ;modbus.c: 368: if(i>1){
-"368
-[e $ ! > -> _i `i -> 1 `i 833  ]
-{
-[; ;modbus.c: 369: for(j=0;j!=8;j++){
-"369
-{
-[e = _j -> -> 0 `i `uc ]
-[e $ != -> _j `i -> 8 `i 834  ]
-[e $U 835  ]
-[e :U 834 ]
-{
-[; ;modbus.c: 370: if(coils[l]){
-"370
-[e $ ! != -> *U + &U _coils * -> _l `ux -> -> # *U &U _coils `ui `ux `i -> -> -> 0 `i `Vuc `i 837  ]
-{
-[; ;modbus.c: 371: lsb = 1;
-"371
-[e = _lsb -> -> 1 `i `uc ]
-"372
-}
-[; ;modbus.c: 372: }
-[e $U 838  ]
-"373
-[e :U 837 ]
-[; ;modbus.c: 373: else{
-{
-[; ;modbus.c: 374: lsb = 0;
-"374
-[e = _lsb -> -> 0 `i `uc ]
-"375
-}
-[e :U 838 ]
-[; ;modbus.c: 375: }
-[; ;modbus.c: 376: response[k] ^= (lsb << j);
-"376
-[e =^ *U + &U _response * -> _k `ux -> -> # *U &U _response `ui `ux -> << -> _lsb `i _j `uc ]
-[; ;modbus.c: 377: l++;
-"377
-[e ++ _l -> -> 1 `i `uc ]
-"378
-}
-"369
-[e ++ _j -> -> 1 `i `uc ]
-[e $ != -> _j `i -> 8 `i 834  ]
-[e :U 835 ]
-"378
-}
-[; ;modbus.c: 378: }
-[; ;modbus.c: 379: k++;
-"379
-[e ++ _k -> -> 1 `i `uc ]
-"380
-}
-[; ;modbus.c: 380: }
-[e $U 839  ]
-"381
-[e :U 833 ]
-[; ;modbus.c: 381: else{
-{
-[; ;modbus.c: 382: for(j=0;j!=remainder;j++){
-"382
-{
-[e = _j -> -> 0 `i `uc ]
-[e $U 843  ]
-[e :U 840 ]
-{
-[; ;modbus.c: 383: if(coils[l]){
-"383
-[e $ ! != -> *U + &U _coils * -> _l `ux -> -> # *U &U _coils `ui `ux `i -> -> -> 0 `i `Vuc `i 844  ]
-{
-[; ;modbus.c: 384: lsb = 1;
-"384
-[e = _lsb -> -> 1 `i `uc ]
-"385
-}
-[; ;modbus.c: 385: }
-[e $U 845  ]
-"386
-[e :U 844 ]
-[; ;modbus.c: 386: else{
-{
-[; ;modbus.c: 387: lsb = 0;
-"387
-[e = _lsb -> -> 0 `i `uc ]
-"388
-}
-[e :U 845 ]
-[; ;modbus.c: 388: }
-[; ;modbus.c: 389: response[k] ^= (lsb << j);
-"389
-[e =^ *U + &U _response * -> _k `ux -> -> # *U &U _response `ui `ux -> << -> _lsb `i _j `uc ]
-[; ;modbus.c: 390: l++;
-"390
-[e ++ _l -> -> 1 `i `uc ]
-"391
-}
-"382
-[e ++ _j -> -> 1 `i `uc ]
-[e :U 843 ]
-[e $ != -> _j `i -> _remainder `i 840  ]
-[e :U 841 ]
-"391
-}
-[; ;modbus.c: 391: }
-[; ;modbus.c: 392: k++;
-"392
-[e ++ _k -> -> 1 `i `uc ]
-"393
-}
-[e :U 839 ]
-"394
-}
-"367
-[e -- _i -> -> 1 `i `uc ]
-[e $ != -> _i `i -> 0 `i 830  ]
-[e :U 831 ]
-"394
-}
-[; ;modbus.c: 393: }
-[; ;modbus.c: 394: }
-[; ;modbus.c: 395: crc = generateCRC(k+2);
-"395
-[e = _crc ( _generateCRC (1 -> + -> _k `i -> 2 `i `uc ]
-[; ;modbus.c: 397: response[k] = crc >> 8;
-"397
-[e = *U + &U _response * -> _k `ux -> -> # *U &U _response `ui `ux -> >> _crc -> 8 `i `uc ]
-[; ;modbus.c: 398: response[k+1] = crc;
-"398
-[e = *U + &U _response * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux -> _crc `uc ]
-[; ;modbus.c: 400: LATCbits.LATC1 = 1;
-"400
-[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
-[; ;modbus.c: 401: for(i=0;i!=(k+3);i++){
-"401
-{
-[e = _i -> -> 0 `i `uc ]
-[e $U 849  ]
-[e :U 846 ]
-{
-[; ;modbus.c: 402: while((!TXSTA1bits.TRMT));
-"402
-[e $U 850  ]
-[e :U 851 ]
-[e :U 850 ]
-[e $ ! != -> . . _TXSTA1bits 0 1 `i -> -> -> 0 `i `Vuc `i 851  ]
-[e :U 852 ]
-[; ;modbus.c: 403: TXREG1 = response[i];
-"403
-[e = _TXREG1 *U + &U _response * -> _i `ux -> -> # *U &U _response `ui `ux ]
-"404
-}
-"401
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 849 ]
-[e $ != -> _i `i + -> _k `i -> 3 `i 846  ]
-[e :U 847 ]
-"404
-}
-[; ;modbus.c: 404: }
-[; ;modbus.c: 405: LATCbits.LATC1 = 0;
-"405
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;modbus.c: 406: clearResponse();
-"406
-[e ( _clearResponse ..  ]
-[; ;modbus.c: 407: }
-"407
-[e :UE 828 ]
-}
-"410
-[v _readInputCoil `(v ~T0 @X0 1 ef ]
-{
-[; ;modbus.c: 409: void readInputCoil(void)
-[; ;modbus.c: 410: {
-[e :U _readInputCoil ]
-[f ]
-"414
-[v _rc_Address `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 414: unsigned int rc_Address = 0;
-[e = _rc_Address -> -> 0 `i `ui ]
-"415
-[v _rc_numCoils `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 415: unsigned int rc_numCoils = 0;
-[e = _rc_numCoils -> -> 0 `i `ui ]
-"416
-[v _crc `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 416: unsigned int crc = 0;
-[e = _crc -> -> 0 `i `ui ]
-"418
-[v _howManyBytes `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 418: unsigned char howManyBytes = 0;
-[e = _howManyBytes -> -> 0 `i `uc ]
-"419
-[v _remainder `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 419: unsigned char remainder = 0;
-[e = _remainder -> -> 0 `i `uc ]
-"420
-[v _lsb `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 420: unsigned char lsb = 0;
-[e = _lsb -> -> 0 `i `uc ]
-"421
-[v _i `uc ~T0 @X0 1 a ]
-[v _j `uc ~T0 @X0 1 a ]
-[v _k `uc ~T0 @X0 1 a ]
-[v _l `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 421: unsigned char i,j,k,l = 0;
-[e = _l -> -> 0 `i `uc ]
-[; ;modbus.c: 424: rc_Address = received[2];
-"424
-[e = _rc_Address -> *U + &U _received * -> -> -> 2 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 425: rc_Address <<=8;
-"425
-[e =<< _rc_Address -> 8 `i ]
-[; ;modbus.c: 426: rc_Address |= received[3];
-"426
-[e =| _rc_Address -> *U + &U _received * -> -> -> 3 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 429: rc_numCoils = received[4];
-"429
-[e = _rc_numCoils -> *U + &U _received * -> -> -> 4 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 430: rc_numCoils <<= 8;
-"430
-[e =<< _rc_numCoils -> 8 `i ]
-[; ;modbus.c: 431: rc_numCoils |= received[5];
-"431
-[e =| _rc_numCoils -> *U + &U _received * -> -> -> 5 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 433: response[0] = 2;
-"433
-[e = *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 2 `i `uc ]
-[; ;modbus.c: 434: response[1] = 0x02;
-"434
-[e = *U + &U _response * -> -> -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 2 `i `uc ]
-[; ;modbus.c: 436: howManyBytes = rc_numCoils/8;
-"436
-[e = _howManyBytes -> / _rc_numCoils -> -> 8 `i `ui `uc ]
-[; ;modbus.c: 437: remainder = rc_numCoils % 8;
-"437
-[e = _remainder -> % _rc_numCoils -> -> 8 `i `ui `uc ]
-[; ;modbus.c: 439: if(remainder){
-"439
-[e $ ! != -> _remainder `i -> -> -> 0 `i `uc `i 854  ]
-{
-[; ;modbus.c: 440: howManyBytes += 1;
-"440
-[e =+ _howManyBytes -> -> 1 `i `uc ]
-"441
-}
-[e :U 854 ]
-[; ;modbus.c: 441: }
-[; ;modbus.c: 442: response[2] = howManyBytes;
-"442
-[e = *U + &U _response * -> -> -> 2 `i `ui `ux -> -> # *U &U _response `ui `ux _howManyBytes ]
-[; ;modbus.c: 444: l = rc_Address;
-"444
-[e = _l -> _rc_Address `uc ]
-[; ;modbus.c: 445: k = 3;
-"445
-[e = _k -> -> 3 `i `uc ]
-[; ;modbus.c: 447: for(i=howManyBytes; i!=0; i--){
-"447
-{
-[e = _i _howManyBytes ]
-[e $ != -> _i `i -> 0 `i 855  ]
-[e $U 856  ]
-[e :U 855 ]
-{
-[; ;modbus.c: 448: if(i>1){
-"448
-[e $ ! > -> _i `i -> 1 `i 858  ]
-{
-[; ;modbus.c: 449: for(j=0;j!=8;j++){
-"449
-{
-[e = _j -> -> 0 `i `uc ]
-[e $ != -> _j `i -> 8 `i 859  ]
-[e $U 860  ]
-[e :U 859 ]
-{
-[; ;modbus.c: 450: if(coils[l]){
-"450
-[e $ ! != -> *U + &U _coils * -> _l `ux -> -> # *U &U _coils `ui `ux `i -> -> -> 0 `i `Vuc `i 862  ]
-{
-[; ;modbus.c: 451: lsb = 1;
-"451
-[e = _lsb -> -> 1 `i `uc ]
-"452
-}
-[; ;modbus.c: 452: }
-[e $U 863  ]
-"453
-[e :U 862 ]
-[; ;modbus.c: 453: else{
-{
-[; ;modbus.c: 454: lsb = 0;
-"454
-[e = _lsb -> -> 0 `i `uc ]
-"455
-}
-[e :U 863 ]
-[; ;modbus.c: 455: }
-[; ;modbus.c: 456: response[k] ^= (lsb << j);
-"456
-[e =^ *U + &U _response * -> _k `ux -> -> # *U &U _response `ui `ux -> << -> _lsb `i _j `uc ]
-[; ;modbus.c: 457: l++;
-"457
-[e ++ _l -> -> 1 `i `uc ]
-"458
-}
-"449
-[e ++ _j -> -> 1 `i `uc ]
-[e $ != -> _j `i -> 8 `i 859  ]
-[e :U 860 ]
-"458
-}
-[; ;modbus.c: 458: }
-[; ;modbus.c: 459: k++;
-"459
-[e ++ _k -> -> 1 `i `uc ]
-"460
-}
-[; ;modbus.c: 460: }
-[e $U 864  ]
-"461
-[e :U 858 ]
-[; ;modbus.c: 461: else{
-{
-[; ;modbus.c: 462: for(j=0;j!=remainder;j++){
-"462
-{
-[e = _j -> -> 0 `i `uc ]
-[e $U 868  ]
-[e :U 865 ]
-{
-[; ;modbus.c: 463: if(coils[l]){
-"463
-[e $ ! != -> *U + &U _coils * -> _l `ux -> -> # *U &U _coils `ui `ux `i -> -> -> 0 `i `Vuc `i 869  ]
-{
-[; ;modbus.c: 464: lsb = 1;
-"464
-[e = _lsb -> -> 1 `i `uc ]
-"465
-}
-[; ;modbus.c: 465: }
-[e $U 870  ]
-"466
-[e :U 869 ]
-[; ;modbus.c: 466: else{
-{
-[; ;modbus.c: 467: lsb = 0;
-"467
-[e = _lsb -> -> 0 `i `uc ]
-"468
-}
-[e :U 870 ]
-[; ;modbus.c: 468: }
-[; ;modbus.c: 469: response[k] ^= (lsb << j);
-"469
-[e =^ *U + &U _response * -> _k `ux -> -> # *U &U _response `ui `ux -> << -> _lsb `i _j `uc ]
-[; ;modbus.c: 470: l++;
-"470
-[e ++ _l -> -> 1 `i `uc ]
-"471
-}
-"462
-[e ++ _j -> -> 1 `i `uc ]
-[e :U 868 ]
-[e $ != -> _j `i -> _remainder `i 865  ]
-[e :U 866 ]
-"471
-}
-[; ;modbus.c: 471: }
-[; ;modbus.c: 472: k++;
-"472
-[e ++ _k -> -> 1 `i `uc ]
-"473
-}
-[e :U 864 ]
-"474
-}
-"447
-[e -- _i -> -> 1 `i `uc ]
-[e $ != -> _i `i -> 0 `i 855  ]
-[e :U 856 ]
-"474
-}
-[; ;modbus.c: 473: }
-[; ;modbus.c: 474: }
-[; ;modbus.c: 475: crc = generateCRC(k+2);
-"475
-[e = _crc ( _generateCRC (1 -> + -> _k `i -> 2 `i `uc ]
-[; ;modbus.c: 477: response[k] = crc >> 8;
-"477
-[e = *U + &U _response * -> _k `ux -> -> # *U &U _response `ui `ux -> >> _crc -> 8 `i `uc ]
-[; ;modbus.c: 478: response[k+1] = crc;
-"478
-[e = *U + &U _response * -> -> + -> _k `i -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux -> _crc `uc ]
-[; ;modbus.c: 480: LATCbits.LATC1 = 1;
-"480
-[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
-[; ;modbus.c: 481: for(i=0;i!=(k+3);i++){
-"481
-{
-[e = _i -> -> 0 `i `uc ]
-[e $U 874  ]
-[e :U 871 ]
-{
-[; ;modbus.c: 482: while((!TXSTA1bits.TRMT));
-"482
-[e $U 875  ]
-[e :U 876 ]
-[e :U 875 ]
-[e $ ! != -> . . _TXSTA1bits 0 1 `i -> -> -> 0 `i `Vuc `i 876  ]
-[e :U 877 ]
-[; ;modbus.c: 483: TXREG1 = response[i];
-"483
-[e = _TXREG1 *U + &U _response * -> _i `ux -> -> # *U &U _response `ui `ux ]
-"484
-}
-"481
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 874 ]
-[e $ != -> _i `i + -> _k `i -> 3 `i 871  ]
-[e :U 872 ]
-"484
-}
-[; ;modbus.c: 484: }
-[; ;modbus.c: 485: LATCbits.LATC1 = 0;
-"485
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;modbus.c: 486: clearResponse();
-"486
-[e ( _clearResponse ..  ]
-[; ;modbus.c: 487: }
-"487
-[e :UE 853 ]
-}
-"490
-[v _writeCoil `(v ~T0 @X0 1 ef ]
-{
-[; ;modbus.c: 489: void writeCoil(void)
-[; ;modbus.c: 490: {
-[e :U _writeCoil ]
-[f ]
-"494
-[v _wc_AddressLow `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 494: unsigned int wc_AddressLow = 0;
-[e = _wc_AddressLow -> -> 0 `i `ui ]
-"495
-[v _wc_AddressHigh `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 495: unsigned int wc_AddressHigh = 0;
-[e = _wc_AddressHigh -> -> 0 `i `ui ]
-"496
-[v _wc_Address `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 496: unsigned int wc_Address = 0;
-[e = _wc_Address -> -> 0 `i `ui ]
-"498
-[v _wc_valToWrite `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 498: unsigned int wc_valToWrite = 0;
-[e = _wc_valToWrite -> -> 0 `i `ui ]
-"499
-[v _wc_valToWriteLow `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 499: unsigned int wc_valToWriteLow = 0;
-[e = _wc_valToWriteLow -> -> 0 `i `ui ]
-"500
-[v _wc_valToWriteHigh `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 500: unsigned int wc_valToWriteHigh = 0;
-[e = _wc_valToWriteHigh -> -> 0 `i `ui ]
-"501
-[v _i `i ~T0 @X0 1 a ]
-[; ;modbus.c: 501: int i = 0;
-[e = _i -> 0 `i ]
-"502
-[v _crc `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 502: unsigned int crc = 0;
-[e = _crc -> -> 0 `i `ui ]
-[; ;modbus.c: 505: wc_Address = received[2];
-"505
-[e = _wc_Address -> *U + &U _received * -> -> -> 2 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 506: wc_Address <<= 8;
-"506
-[e =<< _wc_Address -> 8 `i ]
-[; ;modbus.c: 507: wc_Address |= received[3];
-"507
-[e =| _wc_Address -> *U + &U _received * -> -> -> 3 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 509: wc_AddressLow = received[3];
-"509
-[e = _wc_AddressLow -> *U + &U _received * -> -> -> 3 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 510: wc_AddressHigh = received[2];
-"510
-[e = _wc_AddressHigh -> *U + &U _received * -> -> -> 2 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 513: wc_valToWrite = received[4];
-"513
-[e = _wc_valToWrite -> *U + &U _received * -> -> -> 4 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 514: wc_valToWrite <<= 8;
-"514
-[e =<< _wc_valToWrite -> 8 `i ]
-[; ;modbus.c: 515: wc_valToWrite |= received[5];
-"515
-[e =| _wc_valToWrite -> *U + &U _received * -> -> -> 5 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 517: wc_valToWriteLow = received[5];
-"517
-[e = _wc_valToWriteLow -> *U + &U _received * -> -> -> 5 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 518: wc_valToWriteHigh = received[4];
-"518
-[e = _wc_valToWriteHigh -> *U + &U _received * -> -> -> 4 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 520: if(wc_valToWrite){
-"520
-[e $ ! != _wc_valToWrite -> -> 0 `i `ui 879  ]
-{
-[; ;modbus.c: 521: coils[wc_Address] = 0xFF;
-"521
-[e = *U + &U _coils * -> _wc_Address `ux -> -> # *U &U _coils `ui `ux -> -> 255 `i `uc ]
-"522
-}
-[; ;modbus.c: 522: }
-[e $U 880  ]
-"523
-[e :U 879 ]
-[; ;modbus.c: 523: else{
-{
-[; ;modbus.c: 524: coils[wc_Address] = 0x00;
-"524
-[e = *U + &U _coils * -> _wc_Address `ux -> -> # *U &U _coils `ui `ux -> -> 0 `i `uc ]
-"525
-}
-[e :U 880 ]
-[; ;modbus.c: 525: }
-[; ;modbus.c: 527: response[0] = 2;
-"527
-[e = *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 2 `i `uc ]
-[; ;modbus.c: 528: response[1] = 0x02;
-"528
-[e = *U + &U _response * -> -> -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 2 `i `uc ]
-[; ;modbus.c: 529: response[3] = wc_AddressLow;
-"529
-[e = *U + &U _response * -> -> -> 3 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wc_AddressLow `uc ]
-[; ;modbus.c: 530: response[2] = wc_AddressHigh;
-"530
-[e = *U + &U _response * -> -> -> 2 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wc_AddressHigh `uc ]
-[; ;modbus.c: 533: response[4] = wc_valToWriteHigh;
-"533
-[e = *U + &U _response * -> -> -> 4 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wc_valToWriteHigh `uc ]
-[; ;modbus.c: 534: response[5] = wc_valToWriteLow;
-"534
-[e = *U + &U _response * -> -> -> 5 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wc_valToWriteLow `uc ]
-[; ;modbus.c: 536: crc = generateCRC(8);
-"536
-[e = _crc ( _generateCRC (1 -> -> 8 `i `uc ]
-[; ;modbus.c: 538: response[6] = crc >> 8;
-"538
-[e = *U + &U _response * -> -> -> 6 `i `ui `ux -> -> # *U &U _response `ui `ux -> >> _crc -> 8 `i `uc ]
-[; ;modbus.c: 539: response[7] = crc;
-"539
-[e = *U + &U _response * -> -> -> 7 `i `ui `ux -> -> # *U &U _response `ui `ux -> _crc `uc ]
-[; ;modbus.c: 541: LATCbits.LATC1 = 1;
-"541
-[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
-[; ;modbus.c: 542: for(i=0;i!=9;i++){
-"542
-{
-[e = _i -> 0 `i ]
-[e $ != _i -> 9 `i 881  ]
-[e $U 882  ]
-[e :U 881 ]
-{
-[; ;modbus.c: 543: while((!TXSTA1bits.TRMT));
-"543
-[e $U 884  ]
-[e :U 885 ]
-[e :U 884 ]
-[e $ ! != -> . . _TXSTA1bits 0 1 `i -> -> -> 0 `i `Vuc `i 885  ]
-[e :U 886 ]
-[; ;modbus.c: 544: TXREG1 = response[i];
-"544
-[e = _TXREG1 *U + &U _response * -> -> _i `ui `ux -> -> # *U &U _response `ui `ux ]
-"545
-}
-"542
-[e ++ _i -> 1 `i ]
-[e $ != _i -> 9 `i 881  ]
-[e :U 882 ]
-"545
-}
-[; ;modbus.c: 545: }
-[; ;modbus.c: 546: LATCbits.LATC1 = 0;
-"546
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;modbus.c: 547: clearResponse();
-"547
-[e ( _clearResponse ..  ]
-[; ;modbus.c: 548: }
-"548
-[e :UE 878 ]
-}
-"551
-[v _writeMultipleCoils `(v ~T0 @X0 1 ef ]
-{
-[; ;modbus.c: 550: void writeMultipleCoils(void)
-[; ;modbus.c: 551: {
-[e :U _writeMultipleCoils ]
-[f ]
-"555
-[v _wmc_Address `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 555: unsigned int wmc_Address = 0;
-[e = _wmc_Address -> -> 0 `i `ui ]
-"556
-[v _wmc_AddressHigh `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 556: unsigned int wmc_AddressHigh = 0;
-[e = _wmc_AddressHigh -> -> 0 `i `ui ]
-"557
-[v _wmc_AddressLow `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 557: unsigned int wmc_AddressLow = 0;
-[e = _wmc_AddressLow -> -> 0 `i `ui ]
-"558
-[v _wmc_numCoils `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 558: unsigned int wmc_numCoils = 0;
-[e = _wmc_numCoils -> -> 0 `i `ui ]
-"559
-[v _wmc_numCoilsHigh `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 559: unsigned int wmc_numCoilsHigh = 0;
-[e = _wmc_numCoilsHigh -> -> 0 `i `ui ]
-"560
-[v _wmc_numCoilsLow `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 560: unsigned int wmc_numCoilsLow = 0;
-[e = _wmc_numCoilsLow -> -> 0 `i `ui ]
-"561
-[v _wmc_numBytes `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 561: unsigned int wmc_numBytes = 0;
-[e = _wmc_numBytes -> -> 0 `i `ui ]
-"562
-[v _crc `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 562: unsigned int crc = 0;
-[e = _crc -> -> 0 `i `ui ]
-"564
-[v _howManyBytes `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 564: unsigned char howManyBytes = 0;
-[e = _howManyBytes -> -> 0 `i `uc ]
-"565
-[v _remainder `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 565: unsigned char remainder = 0;
-[e = _remainder -> -> 0 `i `uc ]
-"566
-[v _lsb `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 566: unsigned char lsb = 0;
-[e = _lsb -> -> 0 `i `uc ]
-"567
-[v _i `uc ~T0 @X0 1 a ]
-[v _j `uc ~T0 @X0 1 a ]
-[v _k `uc ~T0 @X0 1 a ]
-[v _l `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 567: unsigned char i,j,k,l = 0;
-[e = _l -> -> 0 `i `uc ]
-[; ;modbus.c: 570: wmc_Address = received[2];
-"570
-[e = _wmc_Address -> *U + &U _received * -> -> -> 2 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 571: wmc_AddressHigh = received[2];
-"571
-[e = _wmc_AddressHigh -> *U + &U _received * -> -> -> 2 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 572: wmc_Address <<=8;
-"572
-[e =<< _wmc_Address -> 8 `i ]
-[; ;modbus.c: 573: wmc_Address |= received[3];
-"573
-[e =| _wmc_Address -> *U + &U _received * -> -> -> 3 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 574: wmc_AddressLow = received[3];
-"574
-[e = _wmc_AddressLow -> *U + &U _received * -> -> -> 3 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 577: wmc_numCoils = received[4];
-"577
-[e = _wmc_numCoils -> *U + &U _received * -> -> -> 4 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 578: wmc_numCoilsHigh = received[4];
-"578
-[e = _wmc_numCoilsHigh -> *U + &U _received * -> -> -> 4 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 579: wmc_numCoils <<= 8;
-"579
-[e =<< _wmc_numCoils -> 8 `i ]
-[; ;modbus.c: 580: wmc_numCoils |= received[5];
-"580
-[e =| _wmc_numCoils -> *U + &U _received * -> -> -> 5 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 581: wmc_numCoilsLow = received[5];
-"581
-[e = _wmc_numCoilsLow -> *U + &U _received * -> -> -> 5 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 583: wmc_numBytes = received[6];
-"583
-[e = _wmc_numBytes -> *U + &U _received * -> -> -> 6 `i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 585: response[0] = 2;
-"585
-[e = *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 2 `i `uc ]
-[; ;modbus.c: 586: response[1] = 0x0F;
-"586
-[e = *U + &U _response * -> -> -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux -> -> 15 `i `uc ]
-[; ;modbus.c: 588: howManyBytes = wmc_numCoils/8;
-"588
-[e = _howManyBytes -> / _wmc_numCoils -> -> 8 `i `ui `uc ]
-[; ;modbus.c: 589: remainder = wmc_numCoils % 8;
-"589
-[e = _remainder -> % _wmc_numCoils -> -> 8 `i `ui `uc ]
-[; ;modbus.c: 591: if(remainder){
-"591
-[e $ ! != -> _remainder `i -> -> -> 0 `i `uc `i 888  ]
-{
-[; ;modbus.c: 592: howManyBytes += 1;
-"592
-[e =+ _howManyBytes -> -> 1 `i `uc ]
-"593
-}
-[e :U 888 ]
-[; ;modbus.c: 593: }
-[; ;modbus.c: 594: response[2] = wmc_AddressHigh;
-"594
-[e = *U + &U _response * -> -> -> 2 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wmc_AddressHigh `uc ]
-[; ;modbus.c: 595: response[3] = wmc_AddressLow;
-"595
-[e = *U + &U _response * -> -> -> 3 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wmc_AddressLow `uc ]
-[; ;modbus.c: 597: response[4] = wmc_numCoilsHigh;
-"597
-[e = *U + &U _response * -> -> -> 4 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wmc_numCoilsHigh `uc ]
-[; ;modbus.c: 598: response[5] = wmc_numCoilsLow;
-"598
-[e = *U + &U _response * -> -> -> 5 `i `ui `ux -> -> # *U &U _response `ui `ux -> _wmc_numCoilsLow `uc ]
-[; ;modbus.c: 600: l = wmc_Address;
-"600
-[e = _l -> _wmc_Address `uc ]
-[; ;modbus.c: 601: k = 3;
-"601
-[e = _k -> -> 3 `i `uc ]
-"603
-[v _bitSet `uc ~T0 @X0 1 a ]
-"604
-[v _valToWrite `uc ~T0 @X0 1 a ]
-"605
-[v _q `uc ~T0 @X0 1 a ]
-[; ;modbus.c: 603: unsigned char bitSet;
-[; ;modbus.c: 604: unsigned char valToWrite;
-[; ;modbus.c: 605: unsigned char q = 7;
-[e = _q -> -> 7 `i `uc ]
-[; ;modbus.c: 608: for(i=howManyBytes; i!=0; i--){
-"608
-{
-[e = _i _howManyBytes ]
-[e $ != -> _i `i -> 0 `i 889  ]
-[e $U 890  ]
-[e :U 889 ]
-{
-[; ;modbus.c: 609: valToWrite = received[q];
-"609
-[e = _valToWrite *U + &U _received * -> _q `ux -> -> # *U &U _received `ui `ux ]
-[; ;modbus.c: 610: q++;
-"610
-[e ++ _q -> -> 1 `i `uc ]
-[; ;modbus.c: 611: if(i>1){
-"611
-[e $ ! > -> _i `i -> 1 `i 892  ]
-{
-[; ;modbus.c: 612: for(j=0;j!=8;j++){
-"612
-{
-[e = _j -> -> 0 `i `uc ]
-[e $ != -> _j `i -> 8 `i 893  ]
-[e $U 894  ]
-[e :U 893 ]
-{
-[; ;modbus.c: 613: if(!!((valToWrite) & (1 << (j)))){
-"613
-[e $ ! ! ! != & -> _valToWrite `i << -> 1 `i _j -> 0 `i 896  ]
-{
-[; ;modbus.c: 614: coils[l] = 1;
-"614
-[e = *U + &U _coils * -> _l `ux -> -> # *U &U _coils `ui `ux -> -> 1 `i `uc ]
-"615
-}
-[; ;modbus.c: 615: }
-[e $U 897  ]
-"616
-[e :U 896 ]
-[; ;modbus.c: 616: else{
-{
-[; ;modbus.c: 617: coils[l] = 0;
-"617
-[e = *U + &U _coils * -> _l `ux -> -> # *U &U _coils `ui `ux -> -> 0 `i `uc ]
-"619
-}
-[e :U 897 ]
-[; ;modbus.c: 619: }
-[; ;modbus.c: 620: l++;
-"620
-[e ++ _l -> -> 1 `i `uc ]
-"621
-}
-"612
-[e ++ _j -> -> 1 `i `uc ]
-[e $ != -> _j `i -> 8 `i 893  ]
-[e :U 894 ]
-"621
-}
-"622
-}
-[; ;modbus.c: 621: }
-[; ;modbus.c: 622: }
-[e $U 898  ]
-"623
-[e :U 892 ]
-[; ;modbus.c: 623: else{
-{
-[; ;modbus.c: 624: for(j=0;j!=remainder;j++){
-"624
-{
-[e = _j -> -> 0 `i `uc ]
-[e $U 902  ]
-[e :U 899 ]
-{
-[; ;modbus.c: 625: if(!!((valToWrite) & (1 << (j)))){
-"625
-[e $ ! ! ! != & -> _valToWrite `i << -> 1 `i _j -> 0 `i 903  ]
-{
-[; ;modbus.c: 626: coils[l] = 1;
-"626
-[e = *U + &U _coils * -> _l `ux -> -> # *U &U _coils `ui `ux -> -> 1 `i `uc ]
-"627
-}
-[; ;modbus.c: 627: }
-[e $U 904  ]
-"628
-[e :U 903 ]
-[; ;modbus.c: 628: else{
-{
-[; ;modbus.c: 629: coils[l] = 0;
-"629
-[e = *U + &U _coils * -> _l `ux -> -> # *U &U _coils `ui `ux -> -> 0 `i `uc ]
-"630
-}
-[e :U 904 ]
-[; ;modbus.c: 630: }
-[; ;modbus.c: 631: l++;
-"631
-[e ++ _l -> -> 1 `i `uc ]
-"632
-}
-"624
-[e ++ _j -> -> 1 `i `uc ]
-[e :U 902 ]
-[e $ != -> _j `i -> _remainder `i 899  ]
-[e :U 900 ]
-"632
-}
-"633
-}
-[e :U 898 ]
-"634
-}
-"608
-[e -- _i -> -> 1 `i `uc ]
-[e $ != -> _i `i -> 0 `i 889  ]
-[e :U 890 ]
-"634
-}
-[; ;modbus.c: 632: }
-[; ;modbus.c: 633: }
-[; ;modbus.c: 634: }
-[; ;modbus.c: 635: crc = generateCRC(8);
-"635
-[e = _crc ( _generateCRC (1 -> -> 8 `i `uc ]
-[; ;modbus.c: 637: response[6] = crc >> 8;
-"637
-[e = *U + &U _response * -> -> -> 6 `i `ui `ux -> -> # *U &U _response `ui `ux -> >> _crc -> 8 `i `uc ]
-[; ;modbus.c: 638: response[7] = crc;
-"638
-[e = *U + &U _response * -> -> -> 7 `i `ui `ux -> -> # *U &U _response `ui `ux -> _crc `uc ]
-[; ;modbus.c: 640: LATCbits.LATC1 = 1;
-"640
-[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
-[; ;modbus.c: 641: for(i=0;i!=9;i++){
-"641
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ != -> _i `i -> 9 `i 905  ]
-[e $U 906  ]
-[e :U 905 ]
-{
-[; ;modbus.c: 642: while((!TXSTA1bits.TRMT));
-"642
-[e $U 908  ]
-[e :U 909 ]
-[e :U 908 ]
-[e $ ! != -> . . _TXSTA1bits 0 1 `i -> -> -> 0 `i `Vuc `i 909  ]
-[e :U 910 ]
-[; ;modbus.c: 643: TXREG1 = response[i];
-"643
-[e = _TXREG1 *U + &U _response * -> _i `ux -> -> # *U &U _response `ui `ux ]
-"644
-}
-"641
-[e ++ _i -> -> 1 `i `uc ]
-[e $ != -> _i `i -> 9 `i 905  ]
-[e :U 906 ]
-"644
-}
-[; ;modbus.c: 644: }
-[; ;modbus.c: 645: LATCbits.LATC1 = 0;
-"645
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;modbus.c: 646: clearResponse();
-"646
-[e ( _clearResponse ..  ]
-[; ;modbus.c: 647: }
-"647
-[e :UE 887 ]
-}
-"651
-[v _generateCRC `(ui ~T0 @X0 1 ef1`uc ]
-{
-[; ;modbus.c: 650: unsigned int generateCRC(unsigned char messageLength)
-[; ;modbus.c: 651: {
-[e :U _generateCRC ]
-[v _messageLength `uc ~T0 @X0 1 r1 ]
-[f ]
-"652
-[v _crc `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 652: unsigned int crc = 0xFFFF;
-[e = _crc -> 65535 `ui ]
-"653
-[v _crcHigh `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 653: unsigned int crcHigh = 0;
-[e = _crcHigh -> -> 0 `i `ui ]
-"654
-[v _crcLow `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 654: unsigned int crcLow = 0;
-[e = _crcLow -> -> 0 `i `ui ]
-"655
-[v _i `i ~T0 @X0 1 a ]
-[v _j `i ~T0 @X0 1 a ]
-[; ;modbus.c: 655: int i,j = 0;
-[e = _j -> 0 `i ]
-[; ;modbus.c: 657: for(i=0;i<messageLength-2;i++){
-"657
-{
-[e = _i -> 0 `i ]
-[e $U 915  ]
-[e :U 912 ]
-{
-[; ;modbus.c: 658: crc ^= response[i];
-"658
-[e =^ _crc -> *U + &U _response * -> -> _i `ui `ux -> -> # *U &U _response `ui `ux `ui ]
-[; ;modbus.c: 659: for(j=8; j!=0; j--){
-"659
-{
-[e = _j -> 8 `i ]
-[e $ != _j -> 0 `i 916  ]
-[e $U 917  ]
-[e :U 916 ]
-{
-[; ;modbus.c: 660: if((crc & 0x0001) != 0){
-"660
-[e $ ! != & _crc -> -> 1 `i `ui -> -> 0 `i `ui 919  ]
-{
-[; ;modbus.c: 661: crc >>= 1;
-"661
-[e =>> _crc -> 1 `i ]
-[; ;modbus.c: 662: crc ^= 0xA001;
-"662
-[e =^ _crc -> 40961 `ui ]
-"663
-}
-[; ;modbus.c: 663: }
-[e $U 920  ]
-"664
-[e :U 919 ]
-[; ;modbus.c: 664: else{
-{
-[; ;modbus.c: 665: crc >>= 1;
-"665
-[e =>> _crc -> 1 `i ]
-"666
-}
-[e :U 920 ]
-"667
-}
-"659
-[e -- _j -> 1 `i ]
-[e $ != _j -> 0 `i 916  ]
-[e :U 917 ]
-"667
-}
-"668
-}
-"657
-[e ++ _i -> 1 `i ]
-[e :U 915 ]
-[e $ < _i - -> _messageLength `i -> 2 `i 912  ]
-[e :U 913 ]
-"668
-}
-[; ;modbus.c: 666: }
-[; ;modbus.c: 667: }
-[; ;modbus.c: 668: }
-[; ;modbus.c: 670: crcHigh = (crc & 0x00FF) <<8;
-"670
-[e = _crcHigh << & _crc -> -> 255 `i `ui -> 8 `i ]
-[; ;modbus.c: 671: crcLow = (crc & 0xFF00) >>8;
-"671
-[e = _crcLow >> & _crc -> 65280 `ui -> 8 `i ]
-[; ;modbus.c: 672: crcHigh |= crcLow;
-"672
-[e =| _crcHigh _crcLow ]
-[; ;modbus.c: 673: crc = crcHigh;
-"673
-[e = _crc _crcHigh ]
-[; ;modbus.c: 674: return crc;
-"674
-[e ) _crc ]
-[e $UE 911  ]
-[; ;modbus.c: 675: }
-"675
-[e :UE 911 ]
-}
-"678
-[v _checkCRC `(uc ~T0 @X0 1 ef ]
-{
-[; ;modbus.c: 677: unsigned char checkCRC(void)
-[; ;modbus.c: 678: {
-[e :U _checkCRC ]
-[f ]
-"679
-[v _crc `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 679: unsigned int crc = 0xFFFF;
-[e = _crc -> 65535 `ui ]
-"680
-[v _crcHigh `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 680: unsigned int crcHigh = 0;
-[e = _crcHigh -> -> 0 `i `ui ]
-"681
-[v _crcLow `ui ~T0 @X0 1 a ]
-[; ;modbus.c: 681: unsigned int crcLow = 0;
-[e = _crcLow -> -> 0 `i `ui ]
-"682
-[v _i `i ~T0 @X0 1 a ]
-[v _j `i ~T0 @X0 1 a ]
-[; ;modbus.c: 682: int i,j = 0;
-[e = _j -> 0 `i ]
-[; ;modbus.c: 684: for(i=0;i<messageLength-2;i++){
-"684
-{
-[e = _i -> 0 `i ]
-[e $U 925  ]
-[e :U 922 ]
-{
-[; ;modbus.c: 685: crc ^= received[i];
-"685
-[e =^ _crc -> *U + &U _received * -> -> _i `ui `ux -> -> # *U &U _received `ui `ux `ui ]
-[; ;modbus.c: 686: for(j=8; j!=0; j--){
-"686
-{
-[e = _j -> 8 `i ]
-[e $ != _j -> 0 `i 926  ]
-[e $U 927  ]
-[e :U 926 ]
-{
-[; ;modbus.c: 687: if((crc & 0x0001) != 0){
-"687
-[e $ ! != & _crc -> -> 1 `i `ui -> -> 0 `i `ui 929  ]
-{
-[; ;modbus.c: 688: crc >>= 1;
-"688
-[e =>> _crc -> 1 `i ]
-[; ;modbus.c: 689: crc ^= 0xA001;
-"689
-[e =^ _crc -> 40961 `ui ]
-"690
-}
-[; ;modbus.c: 690: }
-[e $U 930  ]
-"691
-[e :U 929 ]
-[; ;modbus.c: 691: else{
-{
-[; ;modbus.c: 692: crc >>= 1;
-"692
-[e =>> _crc -> 1 `i ]
-"693
-}
-[e :U 930 ]
-"694
-}
-"686
-[e -- _j -> 1 `i ]
-[e $ != _j -> 0 `i 926  ]
-[e :U 927 ]
-"694
-}
-"695
-}
-"684
-[e ++ _i -> 1 `i ]
-[e :U 925 ]
-[e $ < _i - -> _messageLength `i -> 2 `i 922  ]
-[e :U 923 ]
-"695
-}
-[; ;modbus.c: 693: }
-[; ;modbus.c: 694: }
-[; ;modbus.c: 695: }
-[; ;modbus.c: 697: crcHigh = (crc & 0x00FF);
-"697
-[e = _crcHigh & _crc -> -> 255 `i `ui ]
-[; ;modbus.c: 698: crcLow = (crc & 0xFF00) >>8;
-"698
-[e = _crcLow >> & _crc -> 65280 `ui -> 8 `i ]
-[; ;modbus.c: 699: if((crcHigh == received[i])&&(crcLow == received[i+1]))
-"699
-[e $ ! && == _crcHigh -> *U + &U _received * -> -> _i `ui `ux -> -> # *U &U _received `ui `ux `ui == _crcLow -> *U + &U _received * -> -> + _i -> 1 `i `ui `ux -> -> # *U &U _received `ui `ux `ui 931  ]
-[; ;modbus.c: 700: {
-"700
-{
-[; ;modbus.c: 701: return 1;
-"701
-[e ) -> -> 1 `i `uc ]
-[e $UE 921  ]
-"702
-}
-[; ;modbus.c: 702: }
-[e $U 932  ]
-"703
-[e :U 931 ]
-[; ;modbus.c: 703: else{
-{
-[; ;modbus.c: 704: return 0;
-"704
-[e ) -> -> 0 `i `uc ]
-[e $UE 921  ]
-"705
-}
-[e :U 932 ]
-[; ;modbus.c: 705: }
-[; ;modbus.c: 708: }
-"708
-[e :UE 921 ]
+[; ;interrupts.c: 67: }
+[; ;interrupts.c: 68: }
+[e :UE 758 ]
 }

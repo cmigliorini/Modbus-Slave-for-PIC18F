@@ -45,10 +45,10 @@ void main(void)
     if(modbusMessage){
       decodeIt();}
 
+    //Start code here...
+    LATF = holdingReg[0]; //whatever is in register 1 goes on the LEDs
 
-    LATF = holdingReg[1];
 
-      //Start code here... 
     }
 
 }

@@ -128,31 +128,29 @@
 [v _isr isr `II(v  1 e 0 0 ]
 "38 C:\Users\Sam\Documents\GitHub\Modbus-Slave-for-PIC18F\main.c
 [v _main main `(v  1 e 0 0 ]
-"37 C:\Users\Sam\Documents\GitHub\Modbus-Slave-for-PIC18F\modbus.c
+"35 C:\Users\Sam\Documents\GitHub\Modbus-Slave-for-PIC18F\modbus.c
 [v _modbusDelay modbusDelay `(v  1 e 0 0 ]
-"44
+"42
 [v _clearResponse clearResponse `(v  1 e 0 0 ]
-"52
+"50
 [v _decodeIt decodeIt `(v  1 e 0 0 ]
-"88
+"83
 [v _readReg readReg `(v  1 e 0 0 ]
-"142
+"137
 [v _readInputReg readInputReg `(v  1 e 0 0 ]
-"196
+"191
 [v _writeReg writeReg `(v  1 e 0 0 ]
-"253
+"248
 [v _writeMultipleRegs writeMultipleRegs `(v  1 e 0 0 ]
-"330
+"325
 [v _readCoil readCoil `(v  1 e 0 0 ]
-"410
+"405
 [v _readInputCoil readInputCoil `(v  1 e 0 0 ]
-"490
+"485
 [v _writeCoil writeCoil `(v  1 e 0 0 ]
-"551
-[v _writeMultipleCoils writeMultipleCoils `(v  1 e 0 0 ]
-"651
+"546
 [v _generateCRC generateCRC `(ui  1 e 2 0 ]
-"678
+"573
 [v _checkCRC checkCRC `(uc  1 e 1 0 ]
 "24 C:\Users\Sam\Documents\GitHub\Modbus-Slave-for-PIC18F\system.c
 [v _OpnUSART OpnUSART `(v  1 e 0 0 ]
@@ -475,234 +473,197 @@
 {
 "54
 } 0
-"52 C:\Users\Sam\Documents\GitHub\Modbus-Slave-for-PIC18F\modbus.c
+"50 C:\Users\Sam\Documents\GitHub\Modbus-Slave-for-PIC18F\modbus.c
 [v _decodeIt decodeIt `(v  1 e 0 0 ]
 {
-"85
+"80
 } 0
-"551
-[v _writeMultipleCoils writeMultipleCoils `(v  1 e 0 0 ]
-{
-"558
-[v writeMultipleCoils@wmc_numCoils wmc_numCoils `ui  1 a 2 51 ]
-"562
-[v writeMultipleCoils@crc crc `ui  1 a 2 47 ]
-"555
-[v writeMultipleCoils@wmc_Address wmc_Address `ui  1 a 2 44 ]
-"560
-[v writeMultipleCoils@wmc_numCoilsLow wmc_numCoilsLow `ui  1 a 2 41 ]
-"559
-[v writeMultipleCoils@wmc_numCoilsHigh wmc_numCoilsHigh `ui  1 a 2 39 ]
-"557
-[v writeMultipleCoils@wmc_AddressLow wmc_AddressLow `ui  1 a 2 37 ]
-"556
-[v writeMultipleCoils@wmc_AddressHigh wmc_AddressHigh `ui  1 a 2 35 ]
-"561
-[v writeMultipleCoils@wmc_numBytes wmc_numBytes `ui  1 a 2 31 ]
-"567
-[v writeMultipleCoils@i i `uc  1 a 1 55 ]
-[v writeMultipleCoils@j j `uc  1 a 1 54 ]
-[v writeMultipleCoils@l l `uc  1 a 1 53 ]
-"565
-[v writeMultipleCoils@remainder remainder `uc  1 a 1 50 ]
-"604
-[v writeMultipleCoils@valToWrite valToWrite `uc  1 a 1 49 ]
-"564
-[v writeMultipleCoils@howManyBytes howManyBytes `uc  1 a 1 46 ]
-"605
-[v writeMultipleCoils@q q `uc  1 a 1 43 ]
-"567
-[v writeMultipleCoils@k k `uc  1 a 1 34 ]
-"566
-[v writeMultipleCoils@lsb lsb `uc  1 a 1 33 ]
-"647
-} 0
-"253
+"248
 [v _writeMultipleRegs writeMultipleRegs `(v  1 e 0 0 ]
 {
-"270
-[v writeMultipleRegs@i i `ui  1 a 2 56 ]
-"269
-[v writeMultipleRegs@crc crc `ui  1 a 2 53 ]
-"264
-[v writeMultipleRegs@valToWrite valToWrite `ui  1 a 2 51 ]
-"257
-[v writeMultipleRegs@wmr_Address wmr_Address `ui  1 a 2 49 ]
-"263
-[v writeMultipleRegs@wmr_numBytes wmr_numBytes `ui  1 a 2 47 ]
-"262
-[v writeMultipleRegs@wmr_numRegsLow wmr_numRegsLow `ui  1 a 2 45 ]
-"261
-[v writeMultipleRegs@wmr_numRegsHigh wmr_numRegsHigh `ui  1 a 2 43 ]
-"259
-[v writeMultipleRegs@wmr_AddressLow wmr_AddressLow `ui  1 a 2 41 ]
-"258
-[v writeMultipleRegs@wmr_AddressHigh wmr_AddressHigh `ui  1 a 2 39 ]
-"260
-[v writeMultipleRegs@wmr_numRegs wmr_numRegs `ui  1 a 2 37 ]
-"266
-[v writeMultipleRegs@valToWriteLow valToWriteLow `ui  1 a 2 35 ]
 "265
+[v writeMultipleRegs@i i `ui  1 a 2 56 ]
+"264
+[v writeMultipleRegs@crc crc `ui  1 a 2 53 ]
+"259
+[v writeMultipleRegs@valToWrite valToWrite `ui  1 a 2 51 ]
+"252
+[v writeMultipleRegs@wmr_Address wmr_Address `ui  1 a 2 49 ]
+"258
+[v writeMultipleRegs@wmr_numBytes wmr_numBytes `ui  1 a 2 47 ]
+"257
+[v writeMultipleRegs@wmr_numRegsLow wmr_numRegsLow `ui  1 a 2 45 ]
+"256
+[v writeMultipleRegs@wmr_numRegsHigh wmr_numRegsHigh `ui  1 a 2 43 ]
+"254
+[v writeMultipleRegs@wmr_AddressLow wmr_AddressLow `ui  1 a 2 41 ]
+"253
+[v writeMultipleRegs@wmr_AddressHigh wmr_AddressHigh `ui  1 a 2 39 ]
+"255
+[v writeMultipleRegs@wmr_numRegs wmr_numRegs `ui  1 a 2 37 ]
+"261
+[v writeMultipleRegs@valToWriteLow valToWriteLow `ui  1 a 2 35 ]
+"260
 [v writeMultipleRegs@valToWriteHigh valToWriteHigh `ui  1 a 2 33 ]
-"268
+"263
 [v writeMultipleRegs@j j `uc  1 a 1 55 ]
-"326
+"321
 } 0
-"196
+"191
 [v _writeReg writeReg `(v  1 e 0 0 ]
 {
-"209
-[v writeReg@i i `ui  1 a 2 45 ]
-"208
-[v writeReg@crc crc `ui  1 a 2 43 ]
 "204
+[v writeReg@i i `ui  1 a 2 45 ]
+"203
+[v writeReg@crc crc `ui  1 a 2 43 ]
+"199
 [v writeReg@wr_valToWrite wr_valToWrite `ui  1 a 2 41 ]
-"202
+"197
 [v writeReg@wr_Address wr_Address `ui  1 a 2 39 ]
-"206
-[v writeReg@wr_valToWriteHigh wr_valToWriteHigh `ui  1 a 2 37 ]
-"205
-[v writeReg@wr_valToWriteLow wr_valToWriteLow `ui  1 a 2 35 ]
 "201
-[v writeReg@wr_AddressHigh wr_AddressHigh `ui  1 a 2 33 ]
+[v writeReg@wr_valToWriteHigh wr_valToWriteHigh `ui  1 a 2 37 ]
 "200
+[v writeReg@wr_valToWriteLow wr_valToWriteLow `ui  1 a 2 35 ]
+"196
+[v writeReg@wr_AddressHigh wr_AddressHigh `ui  1 a 2 33 ]
+"195
 [v writeReg@wr_AddressLow wr_AddressLow `ui  1 a 2 31 ]
-"250
+"245
 } 0
-"490
+"485
 [v _writeCoil writeCoil `(v  1 e 0 0 ]
 {
-"501
-[v writeCoil@i i `i  1 a 2 44 ]
 "496
+[v writeCoil@i i `i  1 a 2 44 ]
+"491
 [v writeCoil@wc_Address wc_Address `ui  1 a 2 42 ]
-"502
+"497
 [v writeCoil@crc crc `ui  1 a 2 40 ]
-"498
+"493
 [v writeCoil@wc_valToWrite wc_valToWrite `ui  1 a 2 38 ]
-"500
-[v writeCoil@wc_valToWriteHigh wc_valToWriteHigh `ui  1 a 2 36 ]
-"499
-[v writeCoil@wc_valToWriteLow wc_valToWriteLow `ui  1 a 2 34 ]
 "495
-[v writeCoil@wc_AddressHigh wc_AddressHigh `ui  1 a 2 32 ]
+[v writeCoil@wc_valToWriteHigh wc_valToWriteHigh `ui  1 a 2 36 ]
 "494
+[v writeCoil@wc_valToWriteLow wc_valToWriteLow `ui  1 a 2 34 ]
+"490
+[v writeCoil@wc_AddressHigh wc_AddressHigh `ui  1 a 2 32 ]
+"489
 [v writeCoil@wc_AddressLow wc_AddressLow `ui  1 a 2 30 ]
-"548
+"543
 } 0
-"142
+"137
 [v _readInputReg readInputReg `(v  1 e 0 0 ]
 {
-"147
+"142
 [v readInputReg@i i `ui  1 a 2 39 ]
-"144
+"139
 [v readInputReg@rr_numRegs rr_numRegs `ui  1 a 2 37 ]
-"143
+"138
 [v readInputReg@rr_Address rr_Address `ui  1 a 2 35 ]
-"146
+"141
 [v readInputReg@crc crc `ui  1 a 2 33 ]
-"145
+"140
 [v readInputReg@j j `uc  1 a 1 41 ]
-"193
+"188
 } 0
-"88
+"83
 [v _readReg readReg `(v  1 e 0 0 ]
 {
-"93
+"88
 [v readReg@i i `ui  1 a 2 39 ]
-"90
+"85
 [v readReg@rr_numRegs rr_numRegs `ui  1 a 2 37 ]
-"89
+"84
 [v readReg@rr_Address rr_Address `ui  1 a 2 35 ]
-"92
+"87
 [v readReg@crc crc `ui  1 a 2 33 ]
-"91
+"86
 [v readReg@j j `uc  1 a 1 41 ]
-"139
+"134
 } 0
-"410
+"405
 [v _readInputCoil readInputCoil `(v  1 e 0 0 ]
 {
-"415
+"410
 [v readInputCoil@rc_numCoils rc_numCoils `ui  1 a 2 36 ]
-"416
+"411
 [v readInputCoil@crc crc `ui  1 a 2 33 ]
-"414
+"409
 [v readInputCoil@rc_Address rc_Address `ui  1 a 2 31 ]
-"421
+"416
 [v readInputCoil@k k `uc  1 a 1 43 ]
 [v readInputCoil@j j `uc  1 a 1 42 ]
 [v readInputCoil@i i `uc  1 a 1 41 ]
-"420
+"415
 [v readInputCoil@lsb lsb `uc  1 a 1 40 ]
-"421
+"416
 [v readInputCoil@l l `uc  1 a 1 39 ]
-"418
+"413
 [v readInputCoil@howManyBytes howManyBytes `uc  1 a 1 38 ]
-"419
+"414
 [v readInputCoil@remainder remainder `uc  1 a 1 35 ]
-"487
+"482
 } 0
-"330
+"325
 [v _readCoil readCoil `(v  1 e 0 0 ]
 {
-"335
+"330
 [v readCoil@rc_numCoils rc_numCoils `ui  1 a 2 36 ]
-"336
+"331
 [v readCoil@crc crc `ui  1 a 2 33 ]
-"334
+"329
 [v readCoil@rc_Address rc_Address `ui  1 a 2 31 ]
-"341
+"336
 [v readCoil@k k `uc  1 a 1 43 ]
 [v readCoil@j j `uc  1 a 1 42 ]
 [v readCoil@i i `uc  1 a 1 41 ]
-"340
+"335
 [v readCoil@lsb lsb `uc  1 a 1 40 ]
-"341
+"336
 [v readCoil@l l `uc  1 a 1 39 ]
-"338
+"333
 [v readCoil@howManyBytes howManyBytes `uc  1 a 1 38 ]
-"339
+"334
 [v readCoil@remainder remainder `uc  1 a 1 35 ]
-"407
+"402
 } 0
-"651
+"546
 [v _generateCRC generateCRC `(ui  1 e 2 0 ]
 {
-"652
+"547
 [v generateCRC@crc crc `ui  1 a 2 27 ]
-"655
+"550
 [v generateCRC@j j `i  1 a 2 25 ]
 [v generateCRC@i i `i  1 a 2 23 ]
-"653
+"548
 [v generateCRC@crcHigh crcHigh `ui  1 a 2 21 ]
-"654
+"549
 [v generateCRC@crcLow crcLow `ui  1 a 2 19 ]
-"651
+"546
 [v generateCRC@messageLength messageLength `uc  1 p 1 14 ]
-"675
+"570
 } 0
-"44
+"42
 [v _clearResponse clearResponse `(v  1 e 0 0 ]
 {
-"45
+"43
 [v clearResponse@i i `uc  1 a 1 15 ]
-"49
+"47
 } 0
-"678
+"573
 [v _checkCRC checkCRC `(uc  1 e 1 0 ]
 {
-"682
+"577
 [v checkCRC@i i `i  1 a 2 26 ]
-"679
+"574
 [v checkCRC@crc crc `ui  1 a 2 24 ]
-"682
+"577
 [v checkCRC@j j `i  1 a 2 22 ]
-"681
+"576
 [v checkCRC@crcLow crcLow `ui  1 a 2 20 ]
-"680
+"575
 [v checkCRC@crcHigh crcHigh `ui  1 a 2 18 ]
-"708
+"603
 } 0
 "121 C:\Users\Sam\Documents\GitHub\Modbus-Slave-for-PIC18F\system.c
 [v _ConfigInterrupts ConfigInterrupts `(v  1 e 0 0 ]
@@ -726,10 +687,10 @@
 {
 "68
 } 0
-"37 C:\Users\Sam\Documents\GitHub\Modbus-Slave-for-PIC18F\modbus.c
+"35 C:\Users\Sam\Documents\GitHub\Modbus-Slave-for-PIC18F\modbus.c
 [v _modbusDelay modbusDelay `(v  1 e 0 0 ]
 {
-"41
+"39
 } 0
 "102 C:\Users\Sam\Documents\GitHub\Modbus-Slave-for-PIC18F\system.c
 [v _OpenTmr0 OpenTmr0 `(v  1 e 0 0 ]

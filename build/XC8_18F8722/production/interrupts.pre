@@ -8290,7 +8290,6 @@ void writeMultipleRegs(void);
 void readCoil(void);
 void readInputCoil(void);
 void writeCoil(void);
-void writeMultipleCoils(void);
 void modbusDelay(void);
 void decodeIt(void);
 unsigned int generateCRC(unsigned char);

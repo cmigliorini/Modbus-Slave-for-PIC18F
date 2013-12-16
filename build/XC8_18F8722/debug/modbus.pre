@@ -8383,6 +8383,7 @@ void writeMultipleRegs(void);
 void readCoil(void);
 void readInputCoil(void);
 void writeCoil(void);
+void writeMultipleCoils(void);
 void modbusDelay(void);
 void decodeIt(void);
 unsigned int generateCRC(unsigned char);
@@ -8397,7 +8398,7 @@ void OpnUSART(void);
 
 void OpenTmr0(void);
 
-# 26 "modbus.c"
+# 28 "modbus.c"
 extern volatile unsigned int holdingReg[50];
 extern volatile unsigned char coils[50];
 extern volatile unsigned char response[125];
@@ -8445,6 +8446,9 @@ writeReg();
 }
 else if(received[1] == 0x10){
 writeMultipleRegs();
+}
+else if(received[1] == 0x0F){
+writeMultipleCoils();
 }
 else{
 response[0] = 0;
@@ -8916,6 +8920,106 @@ TXREG1 = response[i];
 LATCbits.LATC1 = 0;
 clearResponse();
 }
+
+void writeMultipleCoils(void)
+{
+
+
+
+unsigned int wmc_Address = 0;
+unsigned int wmc_AddressHigh = 0;
+unsigned int wmc_AddressLow = 0;
+unsigned int wmc_numCoils = 0;
+unsigned int wmc_numCoilsHigh = 0;
+unsigned int wmc_numCoilsLow = 0;
+unsigned int wmc_numBytes = 0;
+unsigned int crc = 0;
+
+unsigned char howManyBytes = 0;
+unsigned char remainder = 0;
+unsigned char lsb = 0;
+unsigned char i,j,k,l = 0;
+
+
+wmc_Address = received[2];
+wmc_AddressHigh = received[2];
+wmc_Address <<=8;
+wmc_Address |= received[3];
+wmc_AddressLow = received[3];
+
+
+wmc_numCoils = received[4];
+wmc_numCoilsHigh = received[4];
+wmc_numCoils <<= 8;
+wmc_numCoils |= received[5];
+wmc_numCoilsLow = received[5];
+
+wmc_numBytes = received[6];
+
+response[0] = 2;
+response[1] = 0x0F;
+
+howManyBytes = wmc_numCoils/8;
+remainder = wmc_numCoils % 8;
+
+if(remainder){
+howManyBytes += 1;
+}
+response[2] = wmc_AddressHigh;
+response[3] = wmc_AddressLow;
+
+response[4] = wmc_numCoilsHigh;
+response[5] = wmc_numCoilsLow;
+
+l = wmc_Address;
+k = 3;
+
+unsigned char bitSet;
+unsigned char valToWrite;
+unsigned char q = 7;
+
+
+for(i=howManyBytes; i!=0; i--){
+valToWrite = received[q];
+q++;
+if(i>1){
+for(j=0;j!=8;j++){
+if(!!((valToWrite) & (1 << (j)))){
+coils[l] = 1;
+}
+else{
+coils[l] = 0;
+
+}
+l++;
+}
+}
+else{
+for(j=0;j!=remainder;j++){
+if(!!((valToWrite) & (1 << (j)))){
+coils[l] = 1;
+}
+else{
+coils[l] = 0;
+}
+l++;
+}
+}
+}
+crc = generateCRC(8);
+
+response[6] = crc >> 8;
+response[7] = crc;
+
+LATCbits.LATC1 = 1;
+for(i=0;i!=9;i++){
+while((!TXSTA1bits.TRMT));
+TXREG1 = response[i];
+}
+LATCbits.LATC1 = 0;
+clearResponse();
+}
+
 
 unsigned int generateCRC(unsigned char messageLength)
 {

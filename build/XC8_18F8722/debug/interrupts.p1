@@ -34,7 +34,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S710 . . . . . . ]
 "13634
 [v _INTCONbits `VS710 ~T0 @X0 0 e@4082 ]
-"17 modbus.h
+"18 modbus.h
 [v _modbusDelay `(v ~T0 @X0 0 ef ]
 "13058 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f8722.h
 [s S695 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -6437,9 +6437,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;modbus.h: 14: void readCoil(void);
 [; ;modbus.h: 15: void readInputCoil(void);
 [; ;modbus.h: 16: void writeCoil(void);
-[; ;modbus.h: 17: void modbusDelay(void);
-[; ;modbus.h: 18: void decodeIt(void);
-[; ;modbus.h: 19: unsigned int generateCRC(unsigned char);
+[; ;modbus.h: 17: void writeMultipleCoils(void);
+[; ;modbus.h: 18: void modbusDelay(void);
+[; ;modbus.h: 19: void decodeIt(void);
+[; ;modbus.h: 20: unsigned int generateCRC(unsigned char);
 [; ;system.h: 39: void ConfigInterrupts(void);
 [; ;system.h: 41: void interrupt isr(void);
 [; ;system.h: 43: void ClsUSART(void);
@@ -6468,9 +6469,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _received `Vuc ~T0 @X0 -> 125 `i e ]
 [; ;interrupts.c: 16: volatile unsigned char received[125];
 "41 system.h
-[v F7109 `(v ~T0 @X0 1 tf ]
+[v F7111 `(v ~T0 @X0 1 tf ]
 "28 interrupts.c
-[v _isr `IF7109 ~T0 @X0 1 e ]
+[v _isr `IF7111 ~T0 @X0 1 e ]
 {
 [; ;interrupts.c: 27: void interrupt isr(void)
 [; ;interrupts.c: 28: {
