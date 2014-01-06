@@ -8,7 +8,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISF `Vuc ~T0 @X0 0 e@3991 ]
 "30 main.c
 [v _modbusMessage `Vuc ~T0 @X0 0 e ]
-"18 modbus.h
+"19 modbus.h
 [v _decodeIt `(v ~T0 @X0 0 ef ]
 "5205 C:\Program Files (x86)\Microchip\xc8\v1.21\include\pic18f8722.h
 [v _LATF `Vuc ~T0 @X0 0 e@3982 ]
@@ -6436,9 +6436,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;modbus.h: 14: void readCoil(void);
 [; ;modbus.h: 15: void readInputCoil(void);
 [; ;modbus.h: 16: void writeCoil(void);
-[; ;modbus.h: 17: void modbusDelay(void);
-[; ;modbus.h: 18: void decodeIt(void);
-[; ;modbus.h: 19: unsigned int generateCRC(unsigned char);
+[; ;modbus.h: 17: void writeMultipleCoils(void);
+[; ;modbus.h: 18: void modbusDelay(void);
+[; ;modbus.h: 19: void decodeIt(void);
+[; ;modbus.h: 20: unsigned int generateCRC(unsigned char);
 "28 main.c
 [v _holdingReg `Vui ~T0 @X0 -> 50 `i e ]
 [i _holdingReg

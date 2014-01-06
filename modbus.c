@@ -261,6 +261,7 @@ void writeMultipleRegs(void)
   unsigned int wmr_numRegsHigh = 0;
   unsigned int wmr_numRegsLow = 0;
   unsigned int wmr_numBytes = 0;
+  unsigned int wmr_numBytesTST = 0;
   unsigned int valToWrite = 0;
   unsigned int valToWriteHigh = 0;
   unsigned int valToWriteLow = 0;
@@ -289,7 +290,13 @@ void writeMultipleRegs(void)
 
   j = 7;
 
-  for(i=0;i<wmr_numBytes;i++)
+  //the following lines haven't been tested yet but were suggested
+  //in a pull request, If you have any problems revert back to wmr_numBytes 
+  //in the for loop from TST (the lines commented below)
+
+  wmr_numBytesTST = wmr_numBytes /2;   
+
+  for(i=0;i<wmr_numBytesTST;i++)
   {
     valToWrite = received[j];
     valToWrite <<= 8;
@@ -299,6 +306,17 @@ void writeMultipleRegs(void)
 
     holdingReg[wmr_Address + i] = valToWrite;
   }
+
+  //for(i=0;i<wmr_numBytes;i++)
+  //{
+  // valToWrite = received[j];
+  //  valToWrite <<= 8;
+  //  j++;
+  //  valToWrite |= received[j];
+  //  j++;
+
+  //  holdingReg[wmr_Address + i] = valToWrite;
+  //}
 
 
   response[0] = SlaveAddress;
