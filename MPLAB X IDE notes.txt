@@ -15,7 +15,7 @@ Install XC8 Compiler v1.38
        Windows - http://www.microchip.com/mplabxc8windows
        Linux -   http://www.microchip.com/mplabxc8linux
        Mac -     http://www.microchip.com/mplabxc8osx
-    
+
 Install PIC18F Legacy Peripheral Libraries v2.0
     http://www.microchip.com/mplab/compilers
         Scroll way way down to Legacy Peripheral Libraries for the PIC18F
@@ -24,3 +24,67 @@ Install PIC18F Legacy Peripheral Libraries v2.0
            Mac -     http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en574976
     Windows installer can't find the XC8 Library, You will need to specify this directory to install:
         Program Files (x86)\Microchip\xc8\v1.38
+
+
+Once project is open in MPLAB X
+    Click File > Project Properties
+        Select Configuration that matches your processor
+        If your processor is not listed then:
+            Click Manage Configurations
+               Select a Similar processor with the compiler you want to use (Example: XC8_18F8722)
+               Click Duplicate
+               Select in list "Copy_of_XC8_18F8722"
+               Click Rename
+               Rename as appropriate
+               Click Set Active
+               Click OK
+            Be sure new configuration is highlighed in the list of categories in project properties
+            Change Device from pulldown in upper right corner
+            Select your hardware tools as appropriate
+            Select your compiler as appropriate
+            Click OK
+    Click on Files tab
+        Open system.h
+            Change line 9 #Define to your processor
+            Change SYS_FREQ to your processor frequency in Hz
+            Change FCY to the number of cycles per instruction for your processor
+            Calculate new Timer0 values to achieve a 1.04mS delay
+                 Formula is 0xFFFF-Hex(FCY*0.00104)
+                 High two bytes are assigned to Timer0High
+                 Low  two bytes are assigned to Timer0Low
+            Set desired BAUD_RATE
+            Set desired SlaveAddress
+            Find the processor you are using #ifdef section
+                Choose which pin you have RO/RE connected to for 
+                    #define writeEnable
+                    #define writeEnConf
+            If you are using a processor that is not listed
+                Make a new #ifdef selection for your processor
+                If your device has one USART
+                   #Define BusyUsart  BusuUSART()
+                   #define TransmitBuffer   TXREG
+                   #define ReceiveBuffer    RCREG
+                If your device has two USARTs
+                   #Define BusyUsart  Busy1USART() or Busy2USART()
+                   #define TransmitBuffer   TXREG1 or TXREG2
+                   #define ReceiveBuffer    RCREG1 or RCREG2
+                Choose which pin you have RO/RE connected to
+                    #define writeEnable
+                    #define writeEnConf
+                #define ReceiveFlag1     PIR1bits.RCIF
+                #define TransmitFlag1    PIR1bits.TXIF
+                #define Timer0Flag       INTCONbits.TMR0IF
+        Open system.c
+            Find #ifdef for your processor
+                Set USART Pins for which USART you are using
+            If you are using a processor that is not listed
+                Make a new #ifdef selections for your processor in
+                    OpenUSART
+                        Set pins and bits as needed
+                    ClsUSART
+                        Set bits as needed
+        Open configuration_bits.c
+            If your processor does not have an #ifdef
+                Create #ifdef for your processor
+                    Please note that not all processors use the same terms.  Consult the datasheet for your processor
+                    
