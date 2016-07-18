@@ -66,4 +66,4 @@ void interrupt isr(void)
    Timer0Flag = 0;  // Clear flag
   }
 }
-#pragma code // return to the default code section
+//#pragma code // return to the default code section  **no longer needed
