@@ -6,8 +6,10 @@
     #include <xc.h>        /* XC8 General Include File */
 #elif defined(HI_TECH_C)
     #include <htc.h>       /* HiTech General Include File */
+    #include <usart.h>
 #elif defined(__18CXX)
     #include <p18cxxx.h>   /* C18 General Include File */
+    #include <usart.h>
 #endif
 
 #if defined(__XC) || defined(HI_TECH_C)
@@ -20,7 +22,6 @@
 #include "system.h"        /* System funct/params, like osc/peripheral config */
 #include "user.h"          /* User funct/params, such as InitApp */
 #include "modbus.h"
-#include <usart.h>
 
 /******************************************************************************/
 /* Modbus Global Variable Declaration                                         */

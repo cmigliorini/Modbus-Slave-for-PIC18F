@@ -6,8 +6,10 @@
     #include <xc.h>         /* XC8 General Include File */
 #elif defined(HI_TECH_C)
     #include <htc.h>        /* HiTech General Include File */
+    #include <usart.h>
 #elif defined(__18CXX)
     #include <p18cxxx.h>    /* C18 General Include File */
+    #include <usart.h>
 #endif
 
 #if defined(__XC) || defined(HI_TECH_C)
@@ -17,8 +19,7 @@
 
 #endif
 
-#include "modbus.h"
-#include <usart.h>
+#include "modbus.h" 
 #include "system.h"
 
 #define CHECK_BIT(var,pos) !!((var) & (1 << (pos)))

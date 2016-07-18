@@ -1,0 +1,6 @@
+Installation notes for MPLAB X IDE 3.35
+Install MPLAB X IDE 3.35
+Install XC8 Compiler v1.38
+Install PIC18F Legacy Peripheral Libraries v2.0
+    You will need to specify this directory to install:
+    Program Files (x86)\Microchip\xc8\v1.38
