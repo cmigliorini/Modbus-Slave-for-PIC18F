@@ -10,10 +10,10 @@
 /******************************************************************************/
 /* Global Variables                                                           */
 /******************************************************************************/
-volatile char endOfMessage,newMessage = 1;
-volatile char timerCount,messageLength,modbusMessage,z = 0;
-volatile unsigned char response[125]; //Enough to return all holding-r's
-volatile unsigned char received[125]; //Enough to write all holding-r's 
+volatile char EndOfMessage,NewMessage = 1;
+volatile char TimerCount,MessageLength,ModbusMessage,z = 0;
+volatile unsigned char Response[125]; //Enough to return all holding-r's
+volatile unsigned char Received[125]; //Enough to write all holding-r's 
 
 /******************************************************************************/
 /* Interrupt Routines                                                         */
@@ -27,43 +27,42 @@ volatile unsigned char received[125]; //Enough to write all holding-r's
 void interrupt isr(void)
 {
   if(ReceiveFlag1){        // USART receive interrupt flag has been set
-    if((!endOfMessage)&&(!newMessage)){
+    if((!EndOfMessage)&&(!NewMessage)){
       if(TransmitFlag1){   // check if the TXREG is empty
-        received[z] = ReceiveBuffer;
+        Received[z] = ReceiveBuffer;
         z++;
-        timerCount = 0;
+        TimerCount = 0;
       }
     }
-    if(newMessage){
+    if(NewMessage){
       OpenTmr0();
       if(TransmitFlag1){     // check if the TXREG is empty
-        received[z] = ReceiveBuffer;
+        Received[z] = ReceiveBuffer;
         z++;
-        newMessage = 0;
-        endOfMessage = 0;
-        messageLength = 0;
-        modbusMessage = 0;
-        timerCount = 0;
+        NewMessage = 0;
+        EndOfMessage = 0;
+        MessageLength = 0;
+        ModbusMessage = 0;
+        TimerCount = 0;
         return;
       }
     }
   }
   else if(Timer0Flag){     //TMR0 interrupt flag
-    modbusDelay();         //Resets timer for 1.04ms
-    timerCount++;
-    if(timerCount > 4){
-      endOfMessage = 1;
-      newMessage = 1;
-      messageLength = z;
-      modbusMessage = 1;
-      for(z=(messageLength);z!=125;z++){ //Clear rest of message
-        received[z] = 0;
+    ModbusDelay();         //Resets timer for 1.04ms
+    TimerCount++;
+    if(TimerCount > 4){
+      EndOfMessage = 1;
+      NewMessage = 1;
+      MessageLength = z;
+      ModbusMessage = 1;
+      for(z=(MessageLength);z!=125;z++){ //Clear rest of message
+        Received[z] = 0;
       }
       z=0;
       T0CONbits.TMR0ON = 0;  //Close timer0
-      timerCount = 0;
+      TimerCount = 0;
     }
    Timer0Flag = 0;           // Clear flag
   }
 }
-//#pragma code // return to the default code section  **no longer needed

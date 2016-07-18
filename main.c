@@ -24,31 +24,33 @@
 /******************************************************************************/
 /* Modbus Global Variable Declaration                                         */
 /******************************************************************************/
-volatile unsigned int  holdingReg[50] = {0};
-volatile unsigned char coils[50]= {0};
-extern volatile char modbusMessage;
+volatile unsigned int  HoldingRegister[50] = {0};
+volatile unsigned char Coils[50]= {0};
+extern volatile char ModbusMessage;
 
 /******************************************************************************/
 /* Main Program                                                               */
 /******************************************************************************/
-
-
 void main(void)
 {
   OpnUSART();
   ConfigInterrupts();
-
-  TRISF = 0;
-
+  
+  //The InitPorts procedute initializes your ports
+  InitPorts();   //configure your ports in user.c under InitPorts
+  
+  //The Iitiaize procedure is called before the program begins
+  //commands here will only run once at program start
+  Initialize();    //enter you initialization code in user.c under Initialize
+  
+  //main program loop
   while(1){
-    if(modbusMessage){
-      decodeIt();}
-
-    //Start code here...
-    LATF = holdingReg[0]; //whatever is in register 1 goes on the LEDs
-
-
+    if(ModbusMessage){
+      DecodeIt();
+      //The modbusEvents procedure is called when a Modbus message is received
+      ModbusEvents();           //enter your code in user.c under ModbusEvents
     }
-
+    //The ProgramLoop procedure will run in an endless loop forever
+    ProgramLoop();   //enter your code in user.c under ProgramLoop
+  }
 }
-

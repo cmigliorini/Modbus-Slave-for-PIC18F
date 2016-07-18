@@ -24,7 +24,7 @@
   #define BusyUsart        BusyUSART()       //For 18F458 this is BusyUSART()
   #define TransmitBuffer   TXREG             //For 18F8458 this is TXREG
   #define ReceiveBuffer    RCREG             //For 18F8458 this is RXREG
-  #define writeEnable      LATAbits.LATA0    //this is RO/RE
+  #define WriteEnable      LATAbits.LATA0    //this is RO/RE
   #define writeEnConf      TRISAbits.TRISA0  //to config RO/RE as output
   #define ReceiveFlag1     PIR1bits.RCIF
   #define TransmitFlag1    PIR1bits.TXIF
@@ -34,7 +34,7 @@
   #define busyUsart        BusyUSART()       //For 18F4520 this is BusyUSART()
   #define TransmitBuffer   TXREG             //For 18F4520 this is TXREG
   #define ReceiveBuffer    RCREG             //For 18F4520 this is RXREG
-  #define writeEnable      LATCbits.LATC1    //this is RO/RE
+  #define WriteEnable      LATCbits.LATC1    //this is RO/RE
   #define writeEnConf      TRISCbits.TRISC1  //to config RO/RE as output
   #define ReceiveFlag1     PIR1bits.RCIF
   #define TransmitFlag1    PIR1bits.TXIF
@@ -44,7 +44,7 @@
   #define busyUsart        Busy1USART()      //For 18F8722 this is Busy1USART()
   #define TransmitBuffer   TXREG1            //For 18F8722 this is TXREG1
   #define ReceiveBuffer    RCREG1            //For 18F8722 this is RXREG1
-  #define writeEnable      LATCbits.LATC1    //this is RO/RE
+  #define WriteEnable      LATCbits.LATC1    //this is RO/RE
   #define writeEnConf      TRISCbits.TRISC1  //to config RO/RE as output
   #define ReceiveFlag1     PIR1bits.RCIF
   #define TransmitFlag1    PIR1bits.TXIF

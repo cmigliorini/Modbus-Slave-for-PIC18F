@@ -33,7 +33,7 @@ void OpnUSART(void)
   spbrg -= 1;
   ClsUSART();    //Incase USART already opened
   writeEnConf = 0; //Set up TRIS register as output for write enable/disable
-  writeEnable = 0;
+  WriteEnable = 0;
  #ifdef p18f458
       TXSTA = 0;              // Reset USART registers to POR state
       RCSTA = 0;

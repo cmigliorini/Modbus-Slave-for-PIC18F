@@ -5,16 +5,16 @@
 /******************************************************************************/
 /* Modbus Function Prototypes                                                   */
 /******************************************************************************/
-unsigned char checkCRC(void);
-void clearResponse(void);
-void readReg(void);         /* I/O and Peripheral Initialization */
-void readInputReg(void);
-void writeReg(void);
-void writeMultipleRegs(void);
-void readCoil(void);
-void readInputCoil(void);
-void writeCoil(void);
-void writeMultipleCoils(void);
-void modbusDelay(void);              /* Writes to Timer0 for 1.04ms delay*/
-void decodeIt(void);
-unsigned int generateCRC(unsigned char);
+unsigned char CheckCRC(void);
+void ClearResponse(void);
+void ReadRegister(void);         /* I/O and Peripheral Initialization */
+void ReadInputRegister(void);
+void WriteRegister(void);
+void WriteMultipleRegisters(void);
+void ReadCoil(void);
+void ReadInputCoil(void);
+void WriteCoil(void);
+void WriteMultipleCoils(void);
+void ModbusDelay(void);              /* Writes to Timer0 for 1.04ms delay*/
+void DecodeIt(void);
+unsigned int GenerateCRC(unsigned char);
