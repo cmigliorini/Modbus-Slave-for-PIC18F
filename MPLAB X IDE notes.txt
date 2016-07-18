@@ -1,6 +1,26 @@
-Installation notes for MPLAB X IDE 3.35
+This porject can be compiled with MPLAB X IDE 3.35,
+however the C compiler (XC8) is not installed automatically with it,
+and the peripheral library (plib) is also no longer included with 
+the compiler.
+
+Installation notes for MPLAB X IDE 3.35 (links valaid as of 7/18/2016)
 Install MPLAB X IDE 3.35
+    http://www.microchip.com/mplab/mplab-x-ide
+        Windows - http://www.microchip.com/mplabx-ide-windows-installer
+        Linux - http://www.microchip.com/mplabx-ide-linux-installer
+        Mac - http://www.microchip.com/mplabx-ide-osx-installer
+
 Install XC8 Compiler v1.38
+    http://www.microchip.com/mplab/compilers
+       Windows - http://www.microchip.com/mplabxc8windows
+       Linux -   http://www.microchip.com/mplabxc8linux
+       Mac -     http://www.microchip.com/mplabxc8osx
+    
 Install PIC18F Legacy Peripheral Libraries v2.0
-    You will need to specify this directory to install:
-    Program Files (x86)\Microchip\xc8\v1.38
+    http://www.microchip.com/mplab/compilers
+        Scroll way way down to Legacy Peripheral Libraries for the PIC18F
+           Windows - http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en574973
+           Linux -   http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en574970
+           Mac -     http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en574976
+    Windows installer can't find the XC8 Library, You will need to specify this directory to install:
+        Program Files (x86)\Microchip\xc8\v1.38
