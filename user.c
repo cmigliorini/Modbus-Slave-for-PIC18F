@@ -24,7 +24,9 @@
 /* Global variables                                                           */
 /******************************************************************************/
 extern volatile unsigned int  HoldingRegister[50];
+extern volatile unsigned int  InputRegister[50];
 extern volatile unsigned char Coils[50];
+extern volatile unsigned char InputBits[50];
 extern volatile unsigned char Response[125]; //Enough to return all holding-r's
 extern volatile unsigned char Received[125]; //Enough to write all holding-r's
 extern volatile char ModbusMessage,MessageLength;

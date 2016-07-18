@@ -28,7 +28,9 @@
 /* Global variables                                                           */
 /******************************************************************************/
 extern volatile unsigned int  HoldingRegister[50];
+extern volatile unsigned int  InputRegister[50];
 extern volatile unsigned char Coils[50];
+extern volatile unsigned char InputBits[50];
 extern volatile unsigned char Response[125]; //Enough to return all holding-r's
 extern volatile unsigned char Received[125]; //Enough to write all holding-r's
 extern volatile char ModbusMessage,MessageLength;
@@ -163,17 +165,17 @@ void ReadInputRegister(void)
   Response[2] = rr_numRegs*2; //2 bytes per reg
 
   for(i=rr_Address;i<(rr_Address + rr_numRegs);i++){
-    if(HoldingRegister[i] > 255){
+    if(InputRegister[i] > 255){
       //Need to split it up into 2 bytes
-      Response[j] = HoldingRegister[i] >> 8;
+      Response[j] = InputRegister[i] >> 8;
       j++;
-      Response[j] = HoldingRegister[i];
+      Response[j] = InputRegister[i];
       j++;
     }
     else{
       Response[j] = 0x00;
       j++;
-      Response[j] = HoldingRegister[i];
+      Response[j] = InputRegister[i];
       j++;
     }
   }
@@ -280,14 +282,12 @@ void WriteMultipleRegisters(void)
   wmr_AddressHigh = Received[2];
   wmr_AddressLow = Received[3];
 
-
   //Combine number of regs bytes
   wmr_numRegs = Received[4];
   wmr_numRegs <<= 8;
   wmr_numRegs |= Received[5];
   wmr_numRegsHigh = Received[4];
   wmr_numRegsLow = Received[5];
-
   wmr_numBytes = Received[6];
 
   j = 7;
@@ -467,7 +467,7 @@ void ReadInputCoil(void)
   for(i=HowManyBytes; i!=0; i--){
     if(i>1){
       for(j=0;j!=8;j++){
-        if(Coils[l]){
+        if(InputBits[l]){
           lsb = 1;
         }
         else{
@@ -480,7 +480,7 @@ void ReadInputCoil(void)
     }
     else{
       for(j=0;j!=Remainder;j++){
-        if(Coils[l]){
+        if(InputBits[l]){
           lsb = 1;
         }
         else{

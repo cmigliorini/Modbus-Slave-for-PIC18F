@@ -25,8 +25,12 @@
 /* Modbus Global Variable Declaration                                         */
 /******************************************************************************/
 volatile unsigned int  HoldingRegister[50] = {0};
-volatile unsigned char Coils[50]= {0};
-extern volatile char ModbusMessage;
+volatile unsigned int  InputRegister[50] = {0};
+volatile unsigned char Coils[50] = {0};
+volatile unsigned char InputBits[50] = {0};
+volatile unsigned char Response[125] = {0}; //Enough to return all holding-r's
+volatile unsigned char Received[125] = {0}; //Enough to write all holding-r's
+volatile char ModbusMessage,MessageLength;
 
 /******************************************************************************/
 /* Main Program                                                               */
