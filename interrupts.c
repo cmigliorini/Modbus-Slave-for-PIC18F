@@ -26,9 +26,9 @@ volatile unsigned char received[125]; //Enough to write all holding-r's
 
 void interrupt isr(void)
 {
-  if(ReceiveFlag1){ // USART receive interrupt flag has been set
+  if(ReceiveFlag1){        // USART receive interrupt flag has been set
     if((!endOfMessage)&&(!newMessage)){
-      if(TransmitFlag1){     // check if the TXREG is empty
+      if(TransmitFlag1){   // check if the TXREG is empty
         received[z] = ReceiveBuffer;
         z++;
         timerCount = 0;
@@ -48,8 +48,8 @@ void interrupt isr(void)
       }
     }
   }
-  else if(Timer0Flag){ //TMR0 interrupt flag
-    modbusDelay();  //Resets timer for 1.04ms
+  else if(Timer0Flag){     //TMR0 interrupt flag
+    modbusDelay();         //Resets timer for 1.04ms
     timerCount++;
     if(timerCount > 4){
       endOfMessage = 1;
@@ -60,10 +60,10 @@ void interrupt isr(void)
         received[z] = 0;
       }
       z=0;
-      T0CONbits.TMR0ON = 0; //Close timer0
+      T0CONbits.TMR0ON = 0;  //Close timer0
       timerCount = 0;
     }
-   Timer0Flag = 0;  // Clear flag
+   Timer0Flag = 0;           // Clear flag
   }
 }
 //#pragma code // return to the default code section  **no longer needed

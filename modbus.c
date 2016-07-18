@@ -19,10 +19,11 @@
 
 #endif
 
-#include "modbus.h" 
+#include "modbus.h"
 #include "system.h"
 
 #define CHECK_BIT(var,pos) !!((var) & (1 << (pos)))
+
 /******************************************************************************/
 /* Global variables                                                           */
 /******************************************************************************/
@@ -43,10 +44,10 @@ void modbusDelay(void)
 
 void clearResponse(void)
 {
-    unsigned char i;
-    for(i=0;i<125;i++){ //response is 125 long
-      response[i] = 0;
-    }
+  unsigned char i;
+  for(i=0;i<125;i++){ //response is 125 long
+    response[i] = 0;
+  }
 }
 
 void decodeIt(void)
@@ -130,7 +131,7 @@ void readReg(void)
 
   writeEnable = 1;
   for(i=0;i!=j;i++){
-   while(busyUsart); //Change this to Busy1USART for double USART PIC's
+   while(BusyUsart);
      TransmitBuffer = response[i];
   }
   writeEnable = 0;
@@ -184,7 +185,7 @@ void readInputReg(void)
 
   writeEnable = 1;
   for(i=0;i!=j;i++){
-   while(busyUsart); //Change this to Busy1USART for double USART PIC's
+   while(BusyUsart);
      TransmitBuffer = response[i];
   }
   writeEnable = 0;
@@ -243,7 +244,7 @@ void writeReg(void)
 
   writeEnable = 1;
   for(i=0;i!=9;i++){
-   while(busyUsart);//Change this to Busy1USART for double USART PIC's
+   while(BusyUsart);
      TransmitBuffer = response[i];
   }
   writeEnable = 0;
@@ -334,7 +335,7 @@ void writeMultipleRegs(void)
 
   writeEnable = 1;
   for(i=0;i!=9;i++){
-   while(busyUsart); //Change this to Busy1USART for double USART PIC's
+   while(BusyUsart);
      TransmitBuffer = response[i];
   }
   writeEnable = 0;
@@ -386,14 +387,14 @@ void readCoil(void)
   for(i=howManyBytes; i!=0; i--){
     if(i>1){
       for(j=0;j!=8;j++){
-	if(coils[l]){
+    if(coils[l]){
           lsb = 1;
-	}
-	else{
+    }
+    else{
           lsb = 0;
-	}
-	response[k] ^= (lsb << j);
-	l++;
+    }
+    response[k] ^= (lsb << j);
+    l++;
       }
       k++;
     }
@@ -418,7 +419,7 @@ void readCoil(void)
 
   writeEnable = 1;
   for(i=0;i!=(k+3);i++){
-   while(busyUsart);//Change this to Busy1USART for double USART PIC's
+   while(BusyUsart);
      TransmitBuffer = response[i];
   }
   writeEnable = 0;
@@ -464,32 +465,32 @@ void readInputCoil(void)
   k = 3; //start at response 3
 
   for(i=howManyBytes; i!=0; i--){
-		if(i>1){
+    if(i>1){
       for(j=0;j!=8;j++){
-				if(coils[l]){
-					lsb = 1;
-				}
-				else{
+        if(coils[l]){
+          lsb = 1;
+        }
+        else{
           lsb = 0;
-				}
-				response[k] ^= (lsb << j);
-				l++;
-	    }
-			k++;
-	  }
-		else{
-			for(j=0;j!=remainder;j++){
-				if(coils[l]){
-					lsb = 1;
-				}
-				else{
-          lsb = 0;
-				}
+        }
         response[k] ^= (lsb << j);
-				l++;
-			}
-			k++;
-		}
+        l++;
+      }
+      k++;
+    }
+    else{
+      for(j=0;j!=remainder;j++){
+        if(coils[l]){
+          lsb = 1;
+        }
+        else{
+          lsb = 0;
+        }
+        response[k] ^= (lsb << j);
+        l++;
+      }
+      k++;
+    }
   }
   crc = generateCRC(k+2);
 
@@ -498,7 +499,7 @@ void readInputCoil(void)
 
   writeEnable = 1;
   for(i=0;i!=(k+3);i++){
-   while(busyUsart);//Change this to Busy1USART for double USART PIC's
+   while(BusyUsart);
      TransmitBuffer = response[i];
   }
   writeEnable = 0;
@@ -559,7 +560,7 @@ void writeCoil(void)
 
   writeEnable = 1;
   for(i=0;i!=9;i++){
-   while(busyUsart);//Change this to Busy1USART for double USART PIC's
+   while(BusyUsart);
      TransmitBuffer = response[i];
   }
   writeEnable = 0;
@@ -629,14 +630,13 @@ void writeMultipleCoils(void)
     q++;
     if(i>1){
       for(j=0;j!=8;j++){
-	if(CHECK_BIT(valToWrite, j)){
+        if(CHECK_BIT(valToWrite, j)){
           coils[l] = 1;
-	}
-	else{
+        }
+        else{
           coils[l] = 0; //need to sort out remainder stuff
-
-	}
-	l++;
+        }
+        l++;
       }
     }
     else{
@@ -658,7 +658,7 @@ void writeMultipleCoils(void)
 
   writeEnable = 1;
   for(i=0;i!=9;i++){
-   while(busyUsart);//Change this to Busy1USART for double USART PIC's
+   while(BusyUsart);
      TransmitBuffer = response[i];
   }
   writeEnable = 0;
@@ -722,6 +722,4 @@ unsigned char checkCRC(void)
   else{
     return 0;
   }
-
-
 }
