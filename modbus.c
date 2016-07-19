@@ -6,8 +6,10 @@
     #include <xc.h>         /* XC8 General Include File */
 #elif defined(HI_TECH_C)
     #include <htc.h>        /* HiTech General Include File */
+    #include <usart.h>
 #elif defined(__18CXX)
     #include <p18cxxx.h>    /* C18 General Include File */
+    #include <usart.h>
 #endif
 
 #if defined(__XC) || defined(HI_TECH_C)
@@ -18,73 +20,75 @@
 #endif
 
 #include "modbus.h"
-#include <usart.h>
 #include "system.h"
 
 #define CHECK_BIT(var,pos) !!((var) & (1 << (pos)))
+
 /******************************************************************************/
 /* Global variables                                                           */
 /******************************************************************************/
-extern volatile unsigned int  holdingReg[50];
-extern volatile unsigned char coils[50];
-extern volatile unsigned char response[125]; //Enough to return all holding-r's
-extern volatile unsigned char received[125]; //Enough to write all holding-r's
-extern volatile char modbusMessage,messageLength;
+extern volatile unsigned int  HoldingRegister[50];
+extern volatile unsigned int  InputRegister[50];
+extern volatile unsigned char Coils[50];
+extern volatile unsigned char InputBits[50];
+extern volatile unsigned char Response[125]; //Enough to return all holding-r's
+extern volatile unsigned char Received[125]; //Enough to write all holding-r's
+extern volatile char ModbusMessage,MessageLength;
 /******************************************************************************/
 /* User Functions                                                             */
 /******************************************************************************/
-void modbusDelay(void)
+void ModbusDelay(void)
 {
   /* Writes to Timer0 for 1.04ms delay*/
   TMR0H = Timer0High;
   TMR0L = Timer0Low;
 }
 
-void clearResponse(void)
+void ClearResponse(void)
 {
-    unsigned char i;
-    for(i=0;i<125;i++){ //response is 125 long
-      response[i] = 0;
-    }
+  unsigned char i;
+  for(i=0;i<125;i++){ //Response is 125 long
+    Response[i] = 0;
+  }
 }
 
-void decodeIt(void)
+void DecodeIt(void)
 {
-  if(received[0] == SlaveAddress){
-    if(checkCRC()){
-      if(received[1] == 0x01){
-        readCoil();
+  if(Received[0] == SlaveAddress){
+    if(CheckCRC()){
+      if(Received[1] == 0x01){
+        ReadCoil();
       }
-      else if(received[1] == 0x02){
-        readInputCoil();
+      else if(Received[1] == 0x02){
+        ReadInputCoil();
       }
-      else if(received[1] == 0x03){
-        readReg();
+      else if(Received[1] == 0x03){
+        ReadRegister();
       }
-      else if(received[1] == 0x04){
-        readInputReg();
+      else if(Received[1] == 0x04){
+        ReadInputRegister();
       }
-      else if(received[1] == 0x05){
-        writeCoil();
+      else if(Received[1] == 0x05){
+        WriteCoil();
       }	  
-      else if(received[1] == 0x06){
-        writeReg();
+      else if(Received[1] == 0x06){
+        WriteRegister();
       }
-      else if(received[1] == 0x10){
-        writeMultipleRegs();
+      else if(Received[1] == 0x10){
+        WriteMultipleRegisters();
       }
-      else if(received[1] == 0x0F){
-        writeMultipleCoils();
+      else if(Received[1] == 0x0F){
+        WriteMultipleCoils();
       }
       else{
-        response[0] = 0; //error this does nothing though..
+        Response[0] = 0; //error this does nothing though..
       }
     }
   }
-  modbusMessage = 0;
+  ModbusMessage = 0;
 }
 
-void readReg(void)
+void ReadRegister(void)
 {
   unsigned int rr_Address = 0;
   unsigned int rr_numRegs = 0;
@@ -93,52 +97,52 @@ void readReg(void)
   unsigned int i = 0;
 
   //Combine address bytes
-  rr_Address = received[2];
+  rr_Address = Received[2];
   rr_Address <<= 8;
-  rr_Address |= received[3];
+  rr_Address |= Received[3];
 
   //Combine number of regs bytes
-  rr_numRegs = received[4];
+  rr_numRegs = Received[4];
   rr_numRegs <<= 8;
-  rr_numRegs |= received[5];
+  rr_numRegs |= Received[5];
 
-  response[0] = SlaveAddress;
-  response[1] = 0x03;
-  response[2] = rr_numRegs*2; //2 bytes per reg
+  Response[0] = SlaveAddress;
+  Response[1] = 0x03;
+  Response[2] = rr_numRegs*2; //2 bytes per reg
 
   for(i=rr_Address;i<(rr_Address + rr_numRegs);i++){
-    if(holdingReg[i] > 255){
+    if(HoldingRegister[i] > 255){
       //Need to split it up into 2 bytes
-      response[j] = holdingReg[i] >> 8;
+      Response[j] = HoldingRegister[i] >> 8;
       j++;
-      response[j] = holdingReg[i];
+      Response[j] = HoldingRegister[i];
       j++;
     }
     else{
-      response[j] = 0x00;
+      Response[j] = 0x00;
       j++;
-      response[j] = holdingReg[i];
+      Response[j] = HoldingRegister[i];
       j++;
     }
   }
-  crc = generateCRC(j+2);
-  response[j] = crc >> 8;
+  crc = GenerateCRC(j+2);
+  Response[j] = crc >> 8;
   j++;
-  response[j] = crc;
+  Response[j] = crc;
   j+=2;
 
-  writeEnable = 1;
+  WriteEnable = 1;
   for(i=0;i!=j;i++){
-   while(busyUsart); //Change this to Busy1USART for double USART PIC's
-     TransmitBuffer = response[i];
+   while(BusyUsart);
+     TransmitBuffer = Response[i];
   }
-  writeEnable = 0;
+  WriteEnable = 0;
   j=0;
 
-  clearResponse();
+  ClearResponse();
 }
 
-void readInputReg(void)
+void ReadInputRegister(void)
 {
   unsigned int rr_Address = 0;
   unsigned int rr_numRegs = 0;
@@ -147,52 +151,52 @@ void readInputReg(void)
   unsigned int i = 0;
 
   //Combine address bytes
-  rr_Address = received[2];
+  rr_Address = Received[2];
   rr_Address <<= 8;
-  rr_Address |= received[3];
+  rr_Address |= Received[3];
 
   //Combine number of regs bytes
-  rr_numRegs = received[4];
+  rr_numRegs = Received[4];
   rr_numRegs <<= 8;
-  rr_numRegs |= received[5];
+  rr_numRegs |= Received[5];
 
-  response[0] = SlaveAddress;
-  response[1] = 0x04;
-  response[2] = rr_numRegs*2; //2 bytes per reg
+  Response[0] = SlaveAddress;
+  Response[1] = 0x04;
+  Response[2] = rr_numRegs*2; //2 bytes per reg
 
   for(i=rr_Address;i<(rr_Address + rr_numRegs);i++){
-    if(holdingReg[i] > 255){
+    if(InputRegister[i] > 255){
       //Need to split it up into 2 bytes
-      response[j] = holdingReg[i] >> 8;
+      Response[j] = InputRegister[i] >> 8;
       j++;
-      response[j] = holdingReg[i];
+      Response[j] = InputRegister[i];
       j++;
     }
     else{
-      response[j] = 0x00;
+      Response[j] = 0x00;
       j++;
-      response[j] = holdingReg[i];
+      Response[j] = InputRegister[i];
       j++;
     }
   }
-  crc = generateCRC(j+2);
-  response[j] = crc >> 8;
+  crc = GenerateCRC(j+2);
+  Response[j] = crc >> 8;
   j++;
-  response[j] = crc;
+  Response[j] = crc;
   j+=2;
 
-  writeEnable = 1;
+  WriteEnable = 1;
   for(i=0;i!=j;i++){
-   while(busyUsart); //Change this to Busy1USART for double USART PIC's
-     TransmitBuffer = response[i];
+   while(BusyUsart);
+     TransmitBuffer = Response[i];
   }
-  writeEnable = 0;
+  WriteEnable = 0;
   j=0;
 
-  clearResponse();
+  ClearResponse();
 }
 
-void writeReg(void)
+void WriteRegister(void)
 {
 /******************************************************************************/
 /* Works out which reg to write and then responds                             */
@@ -201,55 +205,55 @@ void writeReg(void)
   unsigned int wr_AddressHigh = 0;
   unsigned int wr_Address = 0;
 
-  unsigned int wr_valToWrite = 0;
-  unsigned int wr_valToWriteLow = 0;
-  unsigned int wr_valToWriteHigh = 0;
+  unsigned int wr_ValueToWrite = 0;
+  unsigned int wr_ValueToWriteLow = 0;
+  unsigned int wr_ValueToWriteHigh = 0;
 
   unsigned int crc = 0;
   unsigned int i = 0;
 
   //Combine address bytes
-  wr_Address = received[2];
+  wr_Address = Received[2];
   wr_Address <<= 8;
-  wr_Address |= received[3];
+  wr_Address |= Received[3];
 
-  wr_AddressLow = received[3]; //useful to store
-  wr_AddressHigh = received[2];
+  wr_AddressLow = Received[3]; //useful to store
+  wr_AddressHigh = Received[2];
 
   //Combine value to write regs
-  wr_valToWrite = received[4];
-  wr_valToWrite <<= 8;
-  wr_valToWrite |= received[5];
+  wr_ValueToWrite = Received[4];
+  wr_ValueToWrite <<= 8;
+  wr_ValueToWrite |= Received[5];
 
-  wr_valToWriteLow = received[5];
-  wr_valToWriteHigh = received[4];
+  wr_ValueToWriteLow = Received[5];
+  wr_ValueToWriteHigh = Received[4];
 
-  holdingReg[wr_Address] = wr_valToWrite;
+  HoldingRegister[wr_Address] = wr_ValueToWrite;
 
-  response[0] = SlaveAddress;
-  response[1] = 0x06;
-  response[3] = wr_AddressLow; //2 bytes per reg
-  response[2] = wr_AddressHigh;
+  Response[0] = SlaveAddress;
+  Response[1] = 0x06;
+  Response[3] = wr_AddressLow; //2 bytes per reg
+  Response[2] = wr_AddressHigh;
 
 //TO DO CHECK VALUE IS ACTUALLY WRITTEN//
-  response[4] = wr_valToWriteHigh;
-  response[5] = wr_valToWriteLow;
+  Response[4] = wr_ValueToWriteHigh;
+  Response[5] = wr_ValueToWriteLow;
 
-  crc = generateCRC(8);
+  crc = GenerateCRC(8);
 
-  response[6] = crc >> 8;
-  response[7] = crc;
+  Response[6] = crc >> 8;
+  Response[7] = crc;
 
-  writeEnable = 1;
+  WriteEnable = 1;
   for(i=0;i!=9;i++){
-   while(busyUsart);//Change this to Busy1USART for double USART PIC's
-     TransmitBuffer = response[i];
+   while(BusyUsart);
+     TransmitBuffer = Response[i];
   }
-  writeEnable = 0;
-  clearResponse();
+  WriteEnable = 0;
+  ClearResponse();
 }
 
-void writeMultipleRegs(void)
+void WriteMultipleRegisters(void)
 {
 /******************************************************************************/
 /* Works out which reg to write and then responds                             */
@@ -262,31 +266,29 @@ void writeMultipleRegs(void)
   unsigned int wmr_numRegsLow = 0;
   unsigned int wmr_numBytes = 0;
   unsigned int wmr_numBytesTST = 0;
-  unsigned int valToWrite = 0;
-  unsigned int valToWriteHigh = 0;
-  unsigned int valToWriteLow = 0;
+  unsigned int ValueToWrite = 0;
+  unsigned int ValueToWriteHigh = 0;
+  unsigned int ValueToWriteLow = 0;
 
   unsigned char j = 0;
   unsigned int crc = 0;
   unsigned int i = 0;
 
   //Combine address bytes
-  wmr_Address = received[2];
+  wmr_Address = Received[2];
   wmr_Address <<= 8;
   //add address high and low bits
-  wmr_Address |= received[3];
-  wmr_AddressHigh = received[2];
-  wmr_AddressLow = received[3];
-
+  wmr_Address |= Received[3];
+  wmr_AddressHigh = Received[2];
+  wmr_AddressLow = Received[3];
 
   //Combine number of regs bytes
-  wmr_numRegs = received[4];
+  wmr_numRegs = Received[4];
   wmr_numRegs <<= 8;
-  wmr_numRegs |= received[5];
-  wmr_numRegsHigh = received[4];
-  wmr_numRegsLow = received[5];
-
-  wmr_numBytes = received[6];
+  wmr_numRegs |= Received[5];
+  wmr_numRegsHigh = Received[4];
+  wmr_numRegsLow = Received[5];
+  wmr_numBytes = Received[6];
 
   j = 7;
 
@@ -298,53 +300,53 @@ void writeMultipleRegs(void)
 
   for(i=0;i<wmr_numBytesTST;i++)
   {
-    valToWrite = received[j];
-    valToWrite <<= 8;
+    ValueToWrite = Received[j];
+    ValueToWrite <<= 8;
     j++;
-    valToWrite |= received[j];
+    ValueToWrite |= Received[j];
     j++;
 
-    holdingReg[wmr_Address + i] = valToWrite;
+    HoldingRegister[wmr_Address + i] = ValueToWrite;
   }
 
   //for(i=0;i<wmr_numBytes;i++)
   //{
-  // valToWrite = received[j];
-  //  valToWrite <<= 8;
+  // ValueToWrite = Received[j];
+  //  ValueToWrite <<= 8;
   //  j++;
-  //  valToWrite |= received[j];
+  //  ValueToWrite |= Received[j];
   //  j++;
 
-  //  holdingReg[wmr_Address + i] = valToWrite;
+  //  HoldingRegister[wmr_Address + i] = ValueToWrite;
   //}
 
 
-  response[0] = SlaveAddress;
-  response[1] = 0x10;
-  response[2] = wmr_AddressHigh;
-  response[3] = wmr_AddressLow;
-  response[4] = wmr_numRegsHigh;
-  response[5] = wmr_numRegsLow;
+  Response[0] = SlaveAddress;
+  Response[1] = 0x10;
+  Response[2] = wmr_AddressHigh;
+  Response[3] = wmr_AddressLow;
+  Response[4] = wmr_numRegsHigh;
+  Response[5] = wmr_numRegsLow;
 
-  crc = generateCRC(8);
+  crc = GenerateCRC(8);
 
-  response[6] = crc >> 8;
-  response[7] = crc;
+  Response[6] = crc >> 8;
+  Response[7] = crc;
 
-  writeEnable = 1;
+  WriteEnable = 1;
   for(i=0;i!=9;i++){
-   while(busyUsart); //Change this to Busy1USART for double USART PIC's
-     TransmitBuffer = response[i];
+   while(BusyUsart);
+     TransmitBuffer = Response[i];
   }
-  writeEnable = 0;
+  WriteEnable = 0;
   j=0;
 
-  clearResponse();
+  ClearResponse();
   
 }
 
 
-void readCoil(void)
+void ReadCoil(void)
 {
 /******************************************************************************/
 /* Reads a coil and then responds                                             */
@@ -353,78 +355,78 @@ void readCoil(void)
   unsigned int rc_numCoils = 0;
   unsigned int crc = 0;
 
-  unsigned char howManyBytes = 0;
-  unsigned char remainder = 0;
+  unsigned char HowManyBytes = 0;
+  unsigned char Remainder = 0;
   unsigned char lsb = 0;
   unsigned char i,j,k,l = 0;
 
   //Combine address bytes
-  rc_Address = received[2];
+  rc_Address = Received[2];
   rc_Address <<=8;
-  rc_Address |= received[3];
+  rc_Address |= Received[3];
 
-  //Combine number of coils bytes
-  rc_numCoils = received[4];
+  //Combine number of Coils bytes
+  rc_numCoils = Received[4];
   rc_numCoils <<= 8;
-  rc_numCoils |= received[5];
+  rc_numCoils |= Received[5];
 
-  response[0] = SlaveAddress;
-  response[1] = 0x01;
+  Response[0] = SlaveAddress;
+  Response[1] = 0x01;
 
-  howManyBytes = rc_numCoils/8;
-  remainder = rc_numCoils % 8;
+  HowManyBytes = rc_numCoils/8;
+  Remainder = rc_numCoils % 8;
 
-  if(remainder){
-    howManyBytes += 1;
+  if(Remainder){
+    HowManyBytes += 1;
   }
-  response[2] = howManyBytes;
+  Response[2] = HowManyBytes;
 
   l = rc_Address;
-  k = 3; //start at response 3
+  k = 3; //start at Response 3
 
-  for(i=howManyBytes; i!=0; i--){
+  for(i=HowManyBytes; i!=0; i--){
     if(i>1){
       for(j=0;j!=8;j++){
-	if(coils[l]){
+    if(Coils[l]){
           lsb = 1;
-	}
-	else{
+    }
+    else{
           lsb = 0;
-	}
-	response[k] ^= (lsb << j);
-	l++;
+    }
+    Response[k] ^= (lsb << j);
+    l++;
       }
       k++;
     }
     else{
-      for(j=0;j!=remainder;j++){
-      if(coils[l]){
+      for(j=0;j!=Remainder;j++){
+      if(Coils[l]){
         lsb = 1;
       }
       else{
         lsb = 0;
       }
-      response[k] ^= (lsb << j);
+      Response[k] ^= (lsb << j);
       l++;
       }
       k++;
     }
   }
-  crc = generateCRC(k+2);
+  crc = GenerateCRC(k+2);
 
-  response[k] = crc >> 8;
-  response[k+1] = crc;
+  Response[k] = crc >> 8;
+  Response[k+1] = crc;
 
-  writeEnable = 1;
+  WriteEnable = 1;
   for(i=0;i!=(k+3);i++){
-   while(busyUsart);//Change this to Busy1USART for double USART PIC's
-     TransmitBuffer = response[i];
+   while(BusyUsart);
+     TransmitBuffer = Response[i];
   }
-  writeEnable = 0;
-  clearResponse();
+  WriteEnable = 0;
+  ClearResponse();
 }
 
-void readInputCoil(void)
+void ReadInputCoil(void)
 {
 /******************************************************************************/
 /* Reads a coil and then responds                                             */
@@ -433,78 +435,78 @@ void readInputCoil(void)
   unsigned int rc_numCoils = 0;
   unsigned int crc = 0;
 
-  unsigned char howManyBytes = 0;
-  unsigned char remainder = 0;
+  unsigned char HowManyBytes = 0;
+  unsigned char Remainder = 0;
   unsigned char lsb = 0;
   unsigned char i,j,k,l = 0;
 
   //Combine address bytes
-  rc_Address = received[2];
+  rc_Address = Received[2];
   rc_Address <<=8;
-  rc_Address |= received[3];
+  rc_Address |= Received[3];
 
-  //Combine number of coils bytes
-  rc_numCoils = received[4];
+  //Combine number of Coils bytes
+  rc_numCoils = Received[4];
   rc_numCoils <<= 8;
-  rc_numCoils |= received[5];
+  rc_numCoils |= Received[5];
 
-  response[0] = SlaveAddress;
-  response[1] = 0x02;
+  Response[0] = SlaveAddress;
+  Response[1] = 0x02;
 
-  howManyBytes = rc_numCoils/8;
-  remainder = rc_numCoils % 8;
+  HowManyBytes = rc_numCoils/8;
+  Remainder = rc_numCoils % 8;
 
-  if(remainder){
-    howManyBytes += 1;
+  if(Remainder){
+    HowManyBytes += 1;
   }
-  response[2] = howManyBytes;
+  Response[2] = HowManyBytes;
 
   l = rc_Address;
-  k = 3; //start at response 3
+  k = 3; //start at Response 3
 
-  for(i=howManyBytes; i!=0; i--){
-		if(i>1){
+  for(i=HowManyBytes; i!=0; i--){
+    if(i>1){
       for(j=0;j!=8;j++){
-				if(coils[l]){
-					lsb = 1;
-				}
-				else{
+        if(InputBits[l]){
+          lsb = 1;
+        }
+        else{
           lsb = 0;
-				}
-				response[k] ^= (lsb << j);
-				l++;
-	    }
-			k++;
-	  }
-		else{
-			for(j=0;j!=remainder;j++){
-				if(coils[l]){
-					lsb = 1;
-				}
-				else{
+        }
+        Response[k] ^= (lsb << j);
+        l++;
+      }
+      k++;
+    }
+    else{
+      for(j=0;j!=Remainder;j++){
+        if(InputBits[l]){
+          lsb = 1;
+        }
+        else{
           lsb = 0;
-				}
-        response[k] ^= (lsb << j);
-				l++;
-			}
-			k++;
-		}
+        }
+        Response[k] ^= (lsb << j);
+        l++;
+      }
+      k++;
+    }
   }
-  crc = generateCRC(k+2);
+  crc = GenerateCRC(k+2);
 
-  response[k] = crc >> 8;
-  response[k+1] = crc;
+  Response[k] = crc >> 8;
+  Response[k+1] = crc;
 
-  writeEnable = 1;
+  WriteEnable = 1;
   for(i=0;i!=(k+3);i++){
-   while(busyUsart);//Change this to Busy1USART for double USART PIC's
-     TransmitBuffer = response[i];
+   while(BusyUsart);
+     TransmitBuffer = Response[i];
   }
-  writeEnable = 0;
-  clearResponse();
+  WriteEnable = 0;
+  ClearResponse();
 }
 
-void writeCoil(void)
+void WriteCoil(void)
 {
 /******************************************************************************/
 /* Writes to a coil and then responds                                         */
@@ -513,59 +515,59 @@ void writeCoil(void)
   unsigned int wc_AddressHigh = 0;
   unsigned int wc_Address = 0;
 
-  unsigned int wc_valToWrite = 0;
-  unsigned int wc_valToWriteLow = 0;
-  unsigned int wc_valToWriteHigh = 0;
+  unsigned int wc_ValueToWrite = 0;
+  unsigned int wc_ValueToWriteLow = 0;
+  unsigned int wc_ValueToWriteHigh = 0;
   int i = 0;
   unsigned int crc = 0;
 
   //Combine address bytes
-  wc_Address = received[2];
+  wc_Address = Received[2];
   wc_Address <<= 8;
-  wc_Address |= received[3];
+  wc_Address |= Received[3];
 
-  wc_AddressLow = received[3]; //useful to store
-  wc_AddressHigh = received[2];
+  wc_AddressLow = Received[3]; //useful to store
+  wc_AddressHigh = Received[2];
 
   //Combine value to write regs
-  wc_valToWrite = received[4];
-  wc_valToWrite <<= 8;
-  wc_valToWrite |= received[5];
+  wc_ValueToWrite = Received[4];
+  wc_ValueToWrite <<= 8;
+  wc_ValueToWrite |= Received[5];
 
-  wc_valToWriteLow = received[5];
-  wc_valToWriteHigh = received[4];
+  wc_ValueToWriteLow = Received[5];
+  wc_ValueToWriteHigh = Received[4];
 
-  if(wc_valToWrite){
-    coils[wc_Address] = 0xFF;
+  if(wc_ValueToWrite){
+    Coils[wc_Address] = 0xFF;
   }
   else{
-    coils[wc_Address] = 0x00;
+    Coils[wc_Address] = 0x00;
   }
 
-  response[0] = SlaveAddress;
-  response[1] = 0x02;
-  response[3] = wc_AddressLow; //2 bytes per reg
-  response[2] = wc_AddressHigh;
+  Response[0] = SlaveAddress;
+  Response[1] = 0x02;
+  Response[3] = wc_AddressLow; //2 bytes per reg
+  Response[2] = wc_AddressHigh;
 
 //TO DO CHECK VALUE IS ACTUALLY WRITTEN//
-  response[4] = wc_valToWriteHigh;
-  response[5] = wc_valToWriteLow;
+  Response[4] = wc_ValueToWriteHigh;
+  Response[5] = wc_ValueToWriteLow;
 
-  crc = generateCRC(8);
+  crc = GenerateCRC(8);
 
-  response[6] = crc >> 8;
-  response[7] = crc;
+  Response[6] = crc >> 8;
+  Response[7] = crc;
 
-  writeEnable = 1;
+  WriteEnable = 1;
   for(i=0;i!=9;i++){
-   while(busyUsart);//Change this to Busy1USART for double USART PIC's
-     TransmitBuffer = response[i];
+   while(BusyUsart);
+     TransmitBuffer = Response[i];
   }
-  writeEnable = 0;
-  clearResponse();
+  WriteEnable = 0;
+  ClearResponse();
 }
 
-void writeMultipleCoils(void)
+void WriteMultipleCoils(void)
 {
 /******************************************************************************/
 /* Reads a coil and then responds                                             */
@@ -579,93 +581,92 @@ void writeMultipleCoils(void)
   unsigned int wmc_numBytes = 0;
   unsigned int crc = 0;
 
-  unsigned char howManyBytes = 0;
-  unsigned char remainder = 0;
+  unsigned char HowManyBytes = 0;
+  unsigned char Remainder = 0;
   unsigned char lsb = 0;
   unsigned char i,j,k,l = 0;
 
   //Combine address bytes
-  wmc_Address = received[2];
-  wmc_AddressHigh = received[2];
+  wmc_Address = Received[2];
+  wmc_AddressHigh = Received[2];
   wmc_Address <<=8;
-  wmc_Address |= received[3];
-  wmc_AddressLow = received[3];
+  wmc_Address |= Received[3];
+  wmc_AddressLow = Received[3];
 
-  //Combine number of coils bytes
-  wmc_numCoils = received[4];
-  wmc_numCoilsHigh = received[4];
+  //Combine number of Coils bytes
+  wmc_numCoils = Received[4];
+  wmc_numCoilsHigh = Received[4];
   wmc_numCoils <<= 8;
-  wmc_numCoils |= received[5];
-  wmc_numCoilsLow = received[5];
+  wmc_numCoils |= Received[5];
+  wmc_numCoilsLow = Received[5];
 
-  wmc_numBytes = received[6];
+  wmc_numBytes = Received[6];
 
-  response[0] = SlaveAddress;
-  response[1] = 0x0F;
+  Response[0] = SlaveAddress;
+  Response[1] = 0x0F;
 
-  howManyBytes = wmc_numCoils/8;
-  remainder = wmc_numCoils % 8;
+  HowManyBytes = wmc_numCoils/8;
+  Remainder = wmc_numCoils % 8;
 
-  if(remainder){
-    howManyBytes += 1;
+  if(Remainder){
+    HowManyBytes += 1;
   }
-  response[2] = wmc_AddressHigh;
-  response[3] = wmc_AddressLow;
+  Response[2] = wmc_AddressHigh;
+  Response[3] = wmc_AddressLow;
 
-  response[4] = wmc_numCoilsHigh;
-  response[5] = wmc_numCoilsLow;
+  Response[4] = wmc_numCoilsHigh;
+  Response[5] = wmc_numCoilsLow;
 
   l = wmc_Address;
-  k = 3; //start at response 3
+  k = 3; //start at Response 3
 
   unsigned char bitSet;
-  unsigned char valToWrite;
+  unsigned char ValueToWrite;
   unsigned char q = 7; //count through vals to write
   
 
-  for(i=howManyBytes; i!=0; i--){
-    valToWrite = received[q];
+  for(i=HowManyBytes; i!=0; i--){
+    ValueToWrite = Received[q];
     q++;
     if(i>1){
       for(j=0;j!=8;j++){
-	if(CHECK_BIT(valToWrite, j)){
-          coils[l] = 1;
-	}
-	else{
-          coils[l] = 0; //need to sort out remainder stuff
-
-	}
-	l++;
+        if(CHECK_BIT(ValueToWrite, j)){
+          Coils[l] = 1;
+        }
+        else{
+          Coils[l] = 0; //need to sort out Remainder stuff
+        }
+        l++;
       }
     }
     else{
-      for(j=0;j!=remainder;j++){
-      if(CHECK_BIT(valToWrite, j)){
-          coils[l] = 1;
+      for(j=0;j!=Remainder;j++){
+      if(CHECK_BIT(ValueToWrite, j)){
+          Coils[l] = 1;
       }
       else{
-        coils[l] = 0;
+        Coils[l] = 0;
       }
       l++;
       }
     }
   }
-  crc = generateCRC(8);
+  crc = GenerateCRC(8);
 
-  response[6] = crc >> 8;
-  response[7] = crc;
+  Response[6] = crc >> 8;
+  Response[7] = crc;
 
-  writeEnable = 1;
+  WriteEnable = 1;
   for(i=0;i!=9;i++){
-   while(busyUsart);//Change this to Busy1USART for double USART PIC's
-     TransmitBuffer = response[i];
+   while(BusyUsart);
+     TransmitBuffer = Response[i];
   }
-  writeEnable = 0;
-  clearResponse();
+  WriteEnable = 0;
+  ClearResponse();
 }
 
 
-unsigned int generateCRC(unsigned char messageLength)
+unsigned int GenerateCRC(unsigned char messageLength)
 {
 unsigned int crc = 0xFFFF;
 unsigned int crcHigh = 0;
@@ -673,7 +674,7 @@ unsigned int crcLow = 0;
 int i,j = 0;
 
   for(i=0;i<messageLength-2;i++){
-    crc ^= response[i];
+    crc ^= Response[i];
     for(j=8; j!=0; j--){
       if((crc & 0x0001) != 0){
         crc >>= 1;
@@ -692,15 +693,15 @@ crc = crcHigh;
 return crc;
 }
 
-unsigned char checkCRC(void)
+unsigned char CheckCRC(void)
 {
   unsigned int crc = 0xFFFF;
   unsigned int crcHigh = 0;
   unsigned int crcLow = 0;
   int i,j = 0;
 
-    for(i=0;i<messageLength-2;i++){
-      crc ^= received[i];
+    for(i=0;i<MessageLength-2;i++){
+      crc ^= Received[i];
       for(j=8; j!=0; j--){
         if((crc & 0x0001) != 0){
           crc >>= 1;
@@ -714,13 +715,11 @@ unsigned char checkCRC(void)
   //bytes are wrong way round so doing a swap here..
   crcHigh = (crc & 0x00FF);
   crcLow = (crc & 0xFF00) >>8;
-  if((crcHigh == received[i])&&(crcLow == received[i+1]))
+  if((crcHigh == Received[i])&&(crcLow == Received[i+1]))
   {
     return 1;
   }
   else{
     return 0;
   }
-
-
 }
