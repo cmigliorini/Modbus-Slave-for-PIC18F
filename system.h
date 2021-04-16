@@ -5,7 +5,7 @@
 /* TODO Change all these values for your project */
 
 /* Microcontroller MIPs (FCY) */
-#define p18f458    //either write p18f4520, p18f8722, or P18f458 or your own if added.
+#define p18f4520    //either write p18f4520, p18f8722, or P18f458 or your own if added.
 #define SYS_FREQ         20000000L  //10MHz & 20MHz confirmed working.. have a go
 #define FCY              SYS_FREQ/4
 
@@ -31,7 +31,7 @@
   #define Timer0Flag       INTCONbits.TMR0IF
 #endif
 #ifdef p18f4520
-  #define busyUsart        BusyUSART()       //For 18F4520 this is BusyUSART()
+  #define BusyUsart        BusyUSART()       //For 18F4520 this is BusyUSART()
   #define TransmitBuffer   TXREG             //For 18F4520 this is TXREG
   #define ReceiveBuffer    RCREG             //For 18F4520 this is RXREG
   #define WriteEnable      LATCbits.LATC1    //this is RO/RE

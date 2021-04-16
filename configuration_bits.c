@@ -62,7 +62,7 @@
 #endif
 
 #ifdef p18f4520
-  #include <p18F4520.h>
+  #include <p18f4520.h>
 
   // CONFIG1H
   #pragma config OSC = HS         // Oscillator Selection bits (HS oscillator)
